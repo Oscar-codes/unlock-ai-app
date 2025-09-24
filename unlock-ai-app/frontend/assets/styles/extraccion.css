@@ -1,0 +1,138 @@
+/* Fondo */
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Marca */
+.site-brand {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #666;
+}
+
+/* Contenido principal */
+.extraction-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 4vw;
+  gap: 2vh;
+}
+
+/* Robot */
+.robot-space {
+  width: min(35vw, 260px);
+  height: min(25vh, 200px);
+  background: #ddd;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Burbuja */
+.chat-container { width: 90%; max-width: 700px; }
+.chat-bubble {
+  background: #EDE0FF;
+  padding: 1.2rem 1.5rem;
+  border-radius: 20px;
+  font-size: clamp(1rem, 2vh, 1.3rem);
+  line-height: 1.5;
+  text-align: center;
+  animation: floatChat 4s ease-in-out infinite;
+}
+@keyframes floatChat {
+  0%,100% { transform: translateY(0px); }
+  25% { transform: translateY(-5px); }
+  75% { transform: translateY(5px); }
+}
+
+/* Etapas */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+  margin: 3vh 0;
+  width: 100%;
+  max-width: 800px;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8vh;
+  flex: 1;
+}
+.step span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #777;
+}
+.step .progress-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 10px;
+  background: #ddd;
+  overflow: hidden;
+}
+.step.active span { color: #000; }
+.step.active .progress-bar {
+  background: linear-gradient(90deg, #ff7ef8, #9b4dff, #4f91ff);
+  animation: loadStep 3s linear forwards;
+}
+@keyframes loadStep {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Texto estado */
+.status-text {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+
+/* Footer */
+.agent-footer {
+  position: relative;
+  width: 100%;
+  height: 920px; /* altura de tu imagen */
+  background: url("../images/WAVES BCK.png") no-repeat center bottom;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.footer-overlay {
+  padding-bottom: 20px;
+}
+.footer-logo {
+  width: 250px;
+  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
+  height: auto;         /* mantiene proporción */
+  opacity: 0.95;
+
+  /* Para centrar en el medio */
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ===== Ajuste para totem (portrait 1080x1920) ===== */
+@media (orientation: portrait) {
+  .areas-grid { grid-template-columns: repeat(2, 1fr); }
+  .btn-next { font-size: 1.6rem; padding: 1rem 3rem; }
+}
+
+/* ===== Ajuste para monitor (landscape 1920x1080) ===== */
+@media (orientation: landscape) {
+  .areas-grid { grid-template-columns: repeat(3, 1fr); }
+  .btn-next { font-size: 1.4rem; }
+}

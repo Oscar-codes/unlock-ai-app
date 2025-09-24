@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Unlock AI</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/welcome.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Marca en la esquina superior izquierda -->
+  <header class="d-flex justify-content-end p-3">
+    <a class="site-brand" href="https://www.AI.kodigo.org">AI.kodigo.org</a>
+  </header>
+
+  <!-- Contenido central -->
+  <main class="d-flex flex-column align-items-center text-center">
+
+    <!-- Icono central -->
+    <img src="../assets/images/unlock-icon-white.png" alt="Unlock AI" class="main-icon mb-4" >
+
+   <!-- Carrusel de cards -->
+    <div id="coursesCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="course-card">
+            <div class="course-card-header">
+              <h3>AI FOR DEVELOPERS</h3>
+            </div>
+            <div class="course-card-body">
+              <p>Fundamentos y herramientas para integrar IA en productos y servicios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="course-card">
+            <div class="course-card-header">
+              <h3>AI FOR PROFESSIONALS</h3>
+            </div>
+            <div class="course-card-body">
+              <p>Aplicaciones prácticas de IA para procesos empresariales y analítica.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="course-card">
+            <div class="course-card-header">
+              <h3>AI IN EDUCATION</h3>
+            </div>
+            <div class="course-card-body">
+              <p>Estrategias y casos para mejorar enseñanza y aprendizaje con IA.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="course-card">
+            <div class="course-card-header">
+              <h3>ADVANCED AI TOOLS</h3>
+            </div>
+            <div class="course-card-body">
+              <p>Integración de agentes, LLMs y pipelines de extracción en proyectos reales.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Indicadores (puntos) -->
+     <!-- Indicadores -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+    </div>
+
+    <!-- Slide button -->
+    <div class="slide-btn-container mt-5">
+      <div id="slideButton" class="slide-btn">
+        <span class="slide-text">Slide to unlock</span>
+        <span class="slide-handle">→</span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center mt-4 mb-2">
+    <img src="../assets/images/kodigo-logo.png" alt="Kodigo" class="footer-logo">
+  </footer>
+
+  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/welcome.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+/* Fondo degradado (mismo de welcome) */
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(180deg, #000000, #8C52FF, #FA7EF8);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenido principal */
+.final-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4vh 6vw;
+  gap: 3vh;
+}
+
+/* Texto */
+.final-text {
+  font-size: clamp(1rem, 2vh, 1.4rem);
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+/* QR */
+.qr-container img {
+  width: 180px;
+  height: auto;
+  margin: 2vh 0;
+}
+
+/* Cursos */
+.courses-info {
+  max-width: 800px;
+  margin-top: 2vh;
+}
+.courses-info h4 {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.courses-info h5 {
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.courses-list {
+  list-style: none;
+  padding: 0;
+}
+.courses-list li {
+  margin: 0.8rem 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.courses-list .badge {
+  background: #9b4dff;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Footer */
+.final-footer {
+  margin-top: auto;
+  padding: 3vh 0 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vh;
+}
+.footer-overlay {
+  padding-bottom: 20px;
+}
+.footer-logo {
+  width: 250px;
+  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
+  height: auto;         /* mantiene proporción */
+  opacity: 0.95;
+
+  /* Para centrar en el medio */
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.footer-link {
+  font-size: 1rem;
+  color: #fff;
+  margin: 0;
+}
+
+/* Portrait (Totem 1080x1920) */
+@media (orientation: portrait) {
+  .qr-container img { width: 220px; }
+  .courses-list li { font-size: 1.2rem; }
+  .final-text { font-size: 1.4rem; }
+}
+
+/* Landscape (1920x1080) */
+@media (orientation: landscape) {
+  .final-main { max-width: 900px; margin: 0 auto; }
+}

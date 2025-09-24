@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 8 - Extracción</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/extraccion.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Marca -->
+  <header class="d-flex justify-content-end p-3">
+    <span class="site-brand">Ai.kodigo.org</span>
+  </header>
+
+  <main class="extraction-main text-center">
+
+    <!-- Robot -->
+    <div class="robot-space d-flex align-items-center justify-content-center">
+      <span>Espacio para robot</span>
+    </div>
+
+    <!-- Burbuja -->
+    <div class="chat-container">
+      <div class="chat-bubble">
+        Realizando la extracción de datos a través de IA
+      </div>
+    </div>
+
+    <!-- Etapas de extracción -->
+    <div class="steps">
+      <div class="step active">
+        <span>Documento</span>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="step">
+        <span>Extrayendo</span>
+        <div class="progress-bar"></div>
+      </div>
+      <div class="step">
+        <span>Data Set</span>
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Texto estado -->
+    <p class="status-text">Starting extraction process...</p>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="agent-footer">
+    <div class="footer-overlay">
+      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+    </div>
+  </footer>
+
+  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/extraction.js"></script>
+</body>
+</html>
