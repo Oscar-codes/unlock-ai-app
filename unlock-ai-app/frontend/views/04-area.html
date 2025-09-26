@@ -72,5 +72,37 @@
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+
+  <!-- codigo de peticion de agregar el contador por area -->
+  <script>
+    document.querySelectorAll('.area-item').forEach(item => {
+      item.addEventListener('click', () => {
+        // Remover la clase 'selected' de todos los elementos
+        document.querySelectorAll('.area-item').forEach(i => i.classList.remove('selected'));
+        // Agregar la clase 'selected' al elemento clickeado
+        item.classList.add('selected');
+        
+        // Obtener el nombre del área seleccionada
+        const areaName = item.querySelector('span').textContent;
+        const areaId = areaName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); 
+
+        fetch('http://localhost:3000/registrar-area', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id: areaId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Área seleccionada:', areaId);
+          console.log('Respuesta Backend:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
