@@ -80,6 +80,9 @@
         const docName = item.querySelector('span').textContent;
         const docId = docName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
+        // Guarda el docId en sessionStorage para usarlo en la siguiente pantalla
+        sessionStorage.setItem('selectedDocId', docId);
+
         fetch('http://localhost:3000/seleccionar-documento', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
