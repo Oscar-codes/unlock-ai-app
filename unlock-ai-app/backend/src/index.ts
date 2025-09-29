@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { registrarArea } from "./controllers/AreaController";
-import { seleccionarDocumento, obtenerDocumentoSeleccionado } from "./controllers/DocumentController";
+import { seleccionarDocumento, obtenerDocumentoSeleccionado, procesarDocumentosSeleccionados } from "./controllers/DocumentController";
 
 const app = express();
 
@@ -42,6 +42,17 @@ app.get("/documento-seleccionado", async (req, res) => {
         res.json({ success: true, doc });
     } catch (error) {
         res.status(500).json({ success: false, error });
+    }
+});
+
+// Endpoint para procesar documentos seleccionados
+app.get("/procesar-documentos-seleccionados", async (req, res) => {
+    try {
+        const result = await procesarDocumentosSeleccionados();
+        res.json(result);
+    } catch (error) {
+        console.error("Error en el endpoint /procesar-documentos-seleccionados:", error);
+        res.status(500).json({ success: false, error: "Error al procesar documentos seleccionados." });
     }
 });
 
