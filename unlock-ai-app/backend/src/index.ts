@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import path from "path";
 import { registrarArea } from "./controllers/AreaController";
 import { seleccionarDocumento, obtenerDocumentoSeleccionado } from "./controllers/DocumentController";
 
@@ -9,6 +10,11 @@ const app = express();
 // Middlewares
 app.use(cors()); // permite peticiones desde cualquier origen
 app.use(bodyParser.json());
+
+// Servir archivos estáticos del frontend
+// __dirname se refiere al directorio del script actual (ej: unlock-ai-app/backend/dist)
+// Usamos path.join para construir una ruta relativa a la carpeta 'frontend'
+app.use(express.static(path.join(__dirname, '../../frontend')));
 
 
 // Endpoint para registrar un área
@@ -44,6 +50,12 @@ app.get("/documento-seleccionado", async (req, res) => {
         res.status(500).json({ success: false, error });
     }
 });
+
+// Fallback para que las rutas del frontend funcionen con la navegación del cliente (opcional pero recomendado)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/views/02-welcome.html')); // O el html principal
+});
+
 
 // Levantar servidor
 app.listen(3000, () => {
