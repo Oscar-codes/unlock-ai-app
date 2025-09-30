@@ -1,15 +1,19 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
+import path from "path";
 import { registrarArea } from "./controllers/AreaController";
-import { seleccionarDocumento, obtenerDocumentoSeleccionado, procesarDocumentosSeleccionados } from "./controllers/DocumentController";
+import { seleccionarDocumento, obtenerDocumentoSeleccionado } from "./controllers/DocumentController";
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
-app.use(cors()); // permite peticiones desde cualquier origen
+app.use(cors());
 app.use(bodyParser.json());
 
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, '../../frontend/public')));
 
 // Endpoint para registrar un área
 app.post("/registrar-area", async (req, res) => {
@@ -23,13 +27,13 @@ app.post("/registrar-area", async (req, res) => {
     }
 });
 
-//marcar un documento como seleccionado
+// Marcar un documento como seleccionado
 app.post("/seleccionar-documento", async (req, res) => {
     try {
         const { docId } = req.body;
         await seleccionarDocumento(docId);
         res.json({ success: true, message: "Documento seleccionado con éxito" });
-    }catch (error) {
+    } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: "Error al seleccionar documento" });
     }
@@ -41,22 +45,17 @@ app.get("/documento-seleccionado", async (req, res) => {
         const doc = await obtenerDocumentoSeleccionado();
         res.json({ success: true, doc });
     } catch (error) {
-        res.status(500).json({ success: false, error });
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error al obtener documento seleccionado" });
     }
 });
 
-// Endpoint para procesar documentos seleccionados
-app.get("/procesar-documentos-seleccionados", async (req, res) => {
-    try {
-        const result = await procesarDocumentosSeleccionados();
-        res.json(result);
-    } catch (error) {
-        console.error("Error en el endpoint /procesar-documentos-seleccionados:", error);
-        res.status(500).json({ success: false, error: "Error al procesar documentos seleccionados." });
-    }
+// Fallback para rutas del frontend
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
 });
 
 // Levantar servidor
-app.listen(3000, () => {
-    console.log("Servidor corriendo en http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
