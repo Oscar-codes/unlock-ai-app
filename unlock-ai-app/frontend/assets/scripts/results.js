@@ -1,79 +1,90 @@
 // Lógica JS extraída de 09-results.html
-// Obtener el ID del documento seleccionado desde sessionStorage
-const selectedDocId = sessionStorage.getItem('selectedDocId');
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
 
-// Datos quemados para cada documento
-const documentData = {
-  curriculos: {
-    title: 'Currículum Vitae',
-    description: 'Documento de contabilidad minimalista.',
-    url: 'https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf'
-  },
-  contratos: {
-    title: 'Contrato Laboral',
-    description: 'Documento estándar para acuerdos laborales.',
-    url: 'https://example.com/contrato.pdf'
-  },
-  formularios: {
-    title: 'Formulario de Registro',
-    description: 'Formulario para recopilar datos de usuarios.',
-    url: 'https://example.com/formulario.pdf'
-  },
-  informes: {
-    title: 'Informe Financiero',
-    description: 'Reporte anual de empresa corporativo financiero.',
-    url: 'https://example.com/informe.pdf'
-  },
-  encuestas: {
-    title: 'Encuesta para Estudiantes',
-    description: 'Encuesta para recopilar opiniones de estudiantes.',
-    url: 'https://example.com/encuesta.pdf'
-  },
-  pruebas: {
-    title: 'Encuesta Futuro Tech IA',
-    description: 'Encuesta sobre percepciones y expectativas de la IA.',
-    url: 'https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Encuesta_Futuro_Tech_IA_2024_wxqv6h.pdf'
+  // Obtener el ID del documento seleccionado desde sessionStorage
+  const selectedDocId = sessionStorage.getItem('selectedDocId');
+
+  // Datos quemados para cada documento
+  const documentData = {
+    curriculos: {
+      title: 'Currículum Vitae',
+      description: 'Documento de contabilidad minimalista.',
+      url: 'https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf'
+    },
+    contratos: {
+      title: 'Contrato Laboral',
+      description: 'Documento estándar para acuerdos laborales.',
+      url: 'https://example.com/contrato.pdf'
+    },
+    formularios: {
+      title: 'Formulario de Registro',
+      description: 'Formulario para recopilar datos de usuarios.',
+      url: 'https://example.com/formulario.pdf'
+    },
+    informes: {
+      title: 'Informe Financiero',
+      description: 'Reporte anual de empresa corporativo financiero.',
+      url: 'https://example.com/informe.pdf'
+    },
+    encuestas: {
+      title: 'Encuesta para Estudiantes',
+      description: 'Encuesta para recopilar opiniones de estudiantes.',
+      url: 'https://example.com/encuesta.pdf'
+    },
+    pruebas: {
+      title: 'Encuesta Futuro Tech IA',
+      description: 'Encuesta sobre percepciones y expectativas de la IA.',
+      url: 'https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Encuesta_Futuro_Tech_IA_2024_wxqv6h.pdf'
+    }
+  };
+
+  // Normalizar el ID para manejar variaciones
+  let normalizedDocId = selectedDocId;
+
+  if(normalizedDocId === null){
+    normalizedDocId = 'curriculos';
+  } else if (selectedDocId === 'informes financieros') {
+    normalizedDocId = 'informes';
+  } else if (selectedDocId === 'curriculum vitae' || selectedDocId === 'cv') {
+    normalizedDocId = 'curriculos';
+  } else if (selectedDocId === 'contrato laboral') {
+    normalizedDocId = 'contratos';
+  } else if (selectedDocId === 'formulario de registro') {
+    normalizedDocId = 'formularios';
+  } else if (selectedDocId === 'encuestas') {
+    normalizedDocId = 'encuestas';
+  } else if (selectedDocId === 'pruebas') {
+    normalizedDocId = 'pruebas';
   }
-};
 
-// Normalizar el ID para manejar variaciones
-let normalizedDocId = selectedDocId;
+  // Usar el id correcto del HTML para la tabla
+  const resultsTable = document.getElementById('resultsTable');
 
-if(normalizedDocId ===null){
-  normalizedDocId = 'curriculos';
-}else if (selectedDocId === 'informes financieros') {
-  normalizedDocId = 'informes';
-} else if (selectedDocId === 'curriculum vitae' || selectedDocId === 'cv') {
-  normalizedDocId = 'curriculos';
-} else if (selectedDocId === 'contrato laboral') {
-  normalizedDocId = 'contratos';
-} else if (selectedDocId === 'formulario de registro') {
-  normalizedDocId = 'formularios';
-} else if (selectedDocId === 'encuestas') {
-  normalizedDocId = 'encuestas';
-} else if (selectedDocId === 'pruebas') {
-  normalizedDocId = 'pruebas';
-}
+  // Verificar que el elemento existe antes de continuar
+  if (!resultsTable) {
+    console.error('Error: No se encontró el elemento con id "resultsTable"');
+    return; // Evita que el código intente modificar un elemento nulo
+  }
 
-// Sustituir la tabla por defecto si hay un ID seleccionado
-const defaultTable = document.getElementById('defaultTable');
+  // Función para renderizar la tabla con scroll
+  function renderTable(html) {
+    // El scroll se aplica al contenedor .table-wrap en el HTML
+    const tableWrap = document.querySelector('.table-wrap');
+    if (tableWrap) {
+      tableWrap.style.maxHeight = '400px';
+      tableWrap.style.overflow = 'auto';
+    }
+    resultsTable.innerHTML = html;
+  }
 
-function renderTable(html) {
-  defaultTable.innerHTML = `
-    <div style="max-height:400px;overflow:auto;">
-      ${html}
-    </div>
-  `;
-}
+  // Sustituir la tabla por defecto si hay un ID seleccionado
+  if (normalizedDocId && documentData[normalizedDocId]) {
+    const doc = documentData[normalizedDocId];
 
-if (normalizedDocId && documentData[normalizedDocId]) {
-  const doc = documentData[normalizedDocId];
-
-  if (normalizedDocId === 'contratos') {
-    // Generar filas sin columna de citas
-    renderTable(`
-      <h3>Resumen del Contrato Individual de Trabajo</h3>
-      <table class="table table-bordered">
+    if (normalizedDocId === 'contratos') {
+      // Generar filas sin columna de citas
+      renderTable(`
         <thead>
           <tr>
             <th>Aspecto Contractual</th>
@@ -104,45 +115,45 @@ if (normalizedDocId && documentData[normalizedDocId]) {
           <tr><td>Obligación de Confidencialidad</td><td>El trabajador se obliga a no divulgar datos, información o resultados; esta obligación es de naturaleza permanente y no cesa con la terminación del contrato</td></tr>
           <tr><td>Normatividad Supletoria</td><td>Ley Federal del Trabajo y/o Reglamento Interior de Trabajo</td></tr>
         </tbody>
-      </table>
-    `);
-  } 
-  else if (normalizedDocId === 'informes') {
-   renderTable(`
-  <h3>Resumen del Informe Reporte Anual de la Empresa Corporativo Financiero Violeta y Morado</h3>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Categoría</th>
-        <th>Información Relevante</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><strong>Identificación del Reporte</strong></td><td>Reporte Financiero Industrias Ariova.</td></tr>
-      <tr><td><strong>Porcentajes Clave de Desempeño</strong></td><td>Productividad: <strong>41 %</strong>.</td></tr>
-      <tr><td></td><td>Incremento de Predios: <strong>41 %</strong>.</td></tr>
-      <tr><td></td><td>Importaciones: <strong>26 %</strong>.</td></tr>
-      <tr><td></td><td>Resumen de ventas anuales: <strong>89 %</strong>.</td></tr>
-      <tr><td><strong>Desglose de Ventas Anuales (Porcentaje)</strong></td><td>2024: <strong>59.3 %</strong>.</td></tr>
-      <tr><td></td><td>2023: <strong>29.6 %</strong>.</td></tr>
-      <tr><td></td><td>2022: <strong>11.1 %</strong>.</td></tr>
-      <tr><td><strong>Productos Descontinuados</strong></td><td>Producto 01.</td></tr>
-      <tr><td></td><td>Producto 02.</td></tr>
-      <tr><td></td><td>Producto 03.</td></tr>
-      <tr><td><strong>Temas y Métricas Adicionales</strong></td><td>Gastos en Marketing.</td></tr>
-      <tr><td></td><td>Productos nuevos.</td></tr>
-      <tr><td></td><td>Publicidad en Redes Sociales.</td></tr>
-      <tr><td></td><td>Productos innovadores.</td></tr>
-      <tr><td><strong>Información Contextual</strong></td><td>Se incluye texto introductorio <em>Lorem ipsum dolor sit amet eget, consectetur adipiscing elit. Aliquam semper felis vel metus tincidunt, ut dignissim ex efficitur. Quisque facilisis in leo eget iaculis</em>.</td></tr>
-    </tbody>
-  </table>
-`);
-
-  } else if (normalizedDocId === 'curriculos') {
-    renderTable(`
-      <h3>Resumen del Currículum Vitae de Carla Rodríguez</h3>
-      <table class="table table-bordered">
+      `);
+    } 
+    else if (normalizedDocId === 'informes') {
+      renderTable(`
         <thead>
+          <tr>
+            <th colspan="2"><h3 style="margin: 0;">Resumen del Informe Reporte Anual de la Empresa Corporativo Financiero Violeta y Morado</h3></th>
+          </tr>
+          <tr>
+            <th>Categoría</th>
+            <th>Información Relevante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Identificación del Reporte</strong></td><td>Reporte Financiero Industrias Ariova.</td></tr>
+          <tr><td><strong>Porcentajes Clave de Desempeño</strong></td><td>Productividad: <strong>41 %</strong>.</td></tr>
+          <tr><td></td><td>Incremento de Predios: <strong>41 %</strong>.</td></tr>
+          <tr><td></td><td>Importaciones: <strong>26 %</strong>.</td></tr>
+          <tr><td></td><td>Resumen de ventas anuales: <strong>89 %</strong>.</td></tr>
+          <tr><td><strong>Desglose de Ventas Anuales (Porcentaje)</strong></td><td>2024: <strong>59.3 %</strong>.</td></tr>
+          <tr><td></td><td>2023: <strong>29.6 %</strong>.</td></tr>
+          <tr><td></td><td>2022: <strong>11.1 %</strong>.</td></tr>
+          <tr><td><strong>Productos Descontinuados</strong></td><td>Producto 01.</td></tr>
+          <tr><td></td><td>Producto 02.</td></tr>
+          <tr><td></td><td>Producto 03.</td></tr>
+          <tr><td><strong>Temas y Métricas Adicionales</strong></td><td>Gastos en Marketing.</td></tr>
+          <tr><td></td><td>Productos nuevos.</td></tr>
+          <tr><td></td><td>Publicidad en Redes Sociales.</td></tr>
+          <tr><td></td><td>Productos innovadores.</td></tr>
+          <tr><td><strong>Información Contextual</strong></td><td>Se incluye texto introductorio <em>Lorem ipsum dolor sit amet eget, consectetur adipiscing elit. Aliquam semper felis vel metus tincidunt, ut dignissim ex efficitur. Quisque facilisis in leo eget iaculis</em>.</td></tr>
+        </tbody>
+      `);
+    } 
+    else if (normalizedDocId === 'curriculos') {
+      renderTable(`
+        <thead>
+          <tr>
+            <th colspan="3"><h3 style="margin: 0;">Resumen del Currículum Vitae de Carla Rodríguez</h3></th>
+          </tr>
           <tr>
             <th>Aspecto del CV</th>
             <th>Detalle Específico</th>
@@ -169,13 +180,14 @@ if (normalizedDocId && documentData[normalizedDocId]) {
           <tr><td>Contacto (Correo)</td><td>Correo electrónico</td><td>hola@sitioincreible.com</td></tr>
           <tr><td>Contacto (Web)</td><td>Sitio web</td><td>www.sitioincreible.com</td></tr>
         </tbody>
-      </table>
-    `);
-  } else if (normalizedDocId === 'formularios') {
-        renderTable(`
-      <h3>Resumen del Formulario de Inscripción</h3>
-      <table class="table table-bordered">
+      `);
+    } 
+    else if (normalizedDocId === 'formularios') {
+      renderTable(`
         <thead>
+          <tr>
+            <th colspan="3"><h3 style="margin: 0;">Resumen del Formulario de Inscripción</h3></th>
+          </tr>
           <tr>
             <th>Aspecto del Formulario</th>
             <th>Detalle Específico / Título del Campo</th>
@@ -195,70 +207,81 @@ if (normalizedDocId && documentData[normalizedDocId]) {
           <tr><td>Información Fija (Dirección de la Entidad)</td><td>Dirección de contacto visible</td><td>Calle Cualquiera 123, Cualquier Lugar</td></tr>
           <tr><td>Información Fija (Web de la Entidad)</td><td>Sitio web visible</td><td>www.unsitiogenial.es</td></tr>
         </tbody>
-      </table>
-    `);
-  } else  if(normalizedDocId === 'encuestas') {
-    renderTable(`
-  <h3>Resumen de la Encuesta para Estudiantes</h3>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Categoría</th>
-        <th>Elemento/Campo Solicitado</th>
-        <th>Objetivo del Campo (Según el enunciado)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>Título del Documento</td><td>Encuesta para estudiantes</td><td>N/A</td></tr>
-      <tr><td>Propósito Principal</td><td>Tu opinión es muy importante para nosotros. Tómate un tiempo para responder y contarnos lo que piensas.</td><td>Animar a la participación y destacar la relevancia de las respuestas</td></tr>
-      <tr><td>Sección A</td><td>Tres actividades que disfruté</td><td>Identificar los aspectos o experiencias que resultaron placenteros para el estudiante</td></tr>
-      <tr><td>Sección B</td><td>Dos personas que me gustaría mencionar por su desempeño y dedicación</td><td>Reconocer al personal que destacó (incluyendo profesores, preceptores, secretarios, directores)</td></tr>
-      <tr><td>Sección C</td><td>Una cosa que fue difícil para mí y quisiera que en el futuro cambie</td><td>Señalar obstáculos o problemas experimentados y sugerir cambios futuros</td></tr>
-      <tr><td>Sección D</td><td>El próximo año me gustaría...</td><td>Explorar deseos, expectativas o metas del estudiante para el siguiente ciclo</td></tr>
-    </tbody>
-  </table>
-`);
-  } else if (normalizedDocId === 'encuestas') {
-    renderTable(`
-    <h3>Resumen de la Encuesta Futuro Tech IA</h3>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Pregunta de la Encuesta</th>
-          <th>Tema Central</th>
-          <th>Respuestas / Opiniones Recogidas</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><b>¿Cómo percibes el impacto de la IA en los próximos 10 años?</b></td>
-          <td>Impacto a largo plazo de la IA</td>
-          <td>Se percibe que transformará profundamente la educación, salud y transporte. Se espera que acelere el desarrollo científico y tecnológico a niveles sin precedentes. La IA será parte cotidiana de la vida diaria, desde el hogar hasta el trabajo. También existe la preocupación de que podría incrementar la desigualdad si no se regula correctamente. Será una herramienta clave para la innovación en todas las industrias.</td>
-        </tr>
-        <tr>
-          <td><b>¿Crees que la IA reemplazará más empleos o generará nuevas oportunidades?</b></td>
-          <td>Efecto de la IA en el mercado laboral</td>
-          <td>Habrá un <b>balance entre empleos perdidos y nuevos creados</b>. Se cree que reemplazará trabajos repetitivos, pero abrirá puestos en áreas de alta especialización. Más que reemplazar, potenciará a los trabajadores actuales. Generará nuevas oportunidades en campos que aún no existen. La reconversión laboral será clave para aprovechar el cambio.</td>
-        </tr>
-        <tr>
-          <td><b>¿Qué sector se beneficiará más del uso de la IA?</b></td>
-          <td>Beneficios sectoriales</td>
-          <td>Los sectores mencionados incluyen: Transporte y logística, por la optimización de rutas y vehículos autónomos. Educación, con herramientas de aprendizaje adaptativo. Finanzas, al mejorar la detección de fraudes y toma de decisiones. La salud, gracias a diagnósticos más rápidos y personalizados. Industria tecnológica en general, como motor de innovación.</td>
-        </tr>
-        <tr>
-          <td><b>¿Confías en las decisiones tomadas por sistemas de IA?</b></td>
-          <td>Confianza y ética en la IA</td>
-          <td>Confianza plenamente, ya que reducen sesgos humanos si se diseñan correctamente. Confianza parcialmente, siempre que haya supervisión humana. Todavía existe desconfianza, mencionando que falta más regulación y ética en la IA. La confianza depende del área: en medicina sí, en justicia aún no. Se confía si los algoritmos son transparentes y auditables.</td>
-        </tr>
-        <tr>
-          <td><b>¿Qué riesgos consideras más relevantes sobre la IA?</b></td>
-          <td>Preocupaciones y riesgos éticos/sociales</td>
-          <td>Los riesgos considerados más relevantes son: <b>El uso indebido en la manipulación de información</b>. <b>La falta de regulación ética internacional</b>. La pérdida de empleos en sectores poco calificados. El sesgo en los algoritmos y sus decisiones. La concentración del poder tecnológico en pocas empresas.</td>
-        </tr>
-      </tbody>
-    </table>
-  `);
-
+      `);
+    } 
+    else if(normalizedDocId === 'encuestas') {
+      renderTable(`
+        <thead>
+          <tr>
+            <th colspan="3"><h3 style="margin: 0;">Resumen de la Encuesta para Estudiantes</h3></th>
+          </tr>
+          <tr>
+            <th>Categoría</th>
+            <th>Elemento/Campo Solicitado</th>
+            <th>Objetivo del Campo (Según el enunciado)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Título del Documento</td><td>Encuesta para estudiantes</td><td>N/A</td></tr>
+          <tr><td>Propósito Principal</td><td>Tu opinión es muy importante para nosotros. Tómate un tiempo para responder y contarnos lo que piensas.</td><td>Animar a la participación y destacar la relevancia de las respuestas</td></tr>
+          <tr><td>Sección A</td><td>Tres actividades que disfruté</td><td>Identificar los aspectos o experiencias que resultaron placenteros para el estudiante</td></tr>
+          <tr><td>Sección B</td><td>Dos personas que me gustaría mencionar por su desempeño y dedicación</td><td>Reconocer al personal que destacó (incluyendo profesores, preceptores, secretarios, directores)</td></tr>
+          <tr><td>Sección C</td><td>Una cosa que fue difícil para mí y quisiera que en el futuro cambie</td><td>Señalar obstáculos o problemas experimentados y sugerir cambios futuros</td></tr>
+          <tr><td>Sección D</td><td>El próximo año me gustaría...</td><td>Explorar deseos, expectativas o metas del estudiante para el siguiente ciclo</td></tr>
+        </tbody>
+      `);
+    } 
+    else if (normalizedDocId === 'pruebas') {
+      renderTable(`
+        <thead>
+          <tr>
+            <th colspan="3"><h3 style="margin: 0;">Resumen de la Encuesta Futuro Tech IA</h3></th>
+          </tr>
+          <tr>
+            <th>Pregunta de la Encuesta</th>
+            <th>Tema Central</th>
+            <th>Respuestas / Opiniones Recogidas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>¿Cómo percibes el impacto de la IA en los próximos 10 años?</b></td>
+            <td>Impacto a largo plazo de la IA</td>
+            <td>Se percibe que transformará profundamente la educación, salud y transporte. Se espera que acelere el desarrollo científico y tecnológico a niveles sin precedentes. La IA será parte cotidiana de la vida diaria, desde el hogar hasta el trabajo. También existe la preocupación de que podría incrementar la desigualdad si no se regula correctamente. Será una herramienta clave para la innovación en todas las industrias.</td>
+          </tr>
+          <tr>
+            <td><b>¿Crees que la IA reemplazará más empleos o generará nuevas oportunidades?</b></td>
+            <td>Efecto de la IA en el mercado laboral</td>
+            <td>Habrá un <b>balance entre empleos perdidos y nuevos creados</b>. Se cree que reemplazará trabajos repetitivos, pero abrirá puestos en áreas de alta especialización. Más que reemplazar, potenciará a los trabajadores actuales. Generará nuevas oportunidades en campos que aún no existen. La reconversión laboral será clave para aprovechar el cambio.</td>
+          </tr>
+          <tr>
+            <td><b>¿Qué sector se beneficiará más del uso de la IA?</b></td>
+            <td>Beneficios sectoriales</td>
+            <td>Los sectores mencionados incluyen: Transporte y logística, por la optimización de rutas y vehículos autónomos. Educación, con herramientas de aprendizaje adaptativo. Finanzas, al mejorar la detección de fraudes y toma de decisiones. La salud, gracias a diagnósticos más rápidos y personalizados. Industria tecnológica en general, como motor de innovación.</td>
+          </tr>
+          <tr>
+            <td><b>¿Confías en las decisiones tomadas por sistemas de IA?</b></td>
+            <td>Confianza y ética en la IA</td>
+            <td>Confianza plenamente, ya que reducen sesgos humanos si se diseñan correctamente. Confianza parcialmente, siempre que haya supervisión humana. Todavía existe desconfianza, mencionando que falta más regulación y ética en la IA. La confianza depende del área: en medicina sí, en justicia aún no. Se confía si los algoritmos son transparentes y auditables.</td>
+          </tr>
+          <tr>
+            <td><b>¿Qué riesgos consideras más relevantes sobre la IA?</b></td>
+            <td>Preocupaciones y riesgos éticos/sociales</td>
+            <td>Los riesgos considerados más relevantes son: <b>El uso indebido en la manipulación de información</b>. <b>La falta de regulación ética internacional</b>. La pérdida de empleos en sectores poco calificados. El sesgo en los algoritmos y sus decisiones. La concentración del poder tecnológico en pocas empresas.</td>
+          </tr>
+        </tbody>
+      `);
+    }
   }
-}
-// Si no hay documento seleccionado, no se muestra ninguna tabla
+
+  // Selección dinámica del QR
+  fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
+    .then(res => res.json())
+    .then(data => {
+      if (data.success && data.doc) {
+        // Cambia el QR dinámicamente
+        const qrImg = document.getElementById('qr-img');
+        if (qrImg) qrImg.src = data.doc.qr;
+      }
+    });
+}); // Fin de DOMContentLoaded
