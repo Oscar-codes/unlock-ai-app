@@ -72,5 +72,33 @@
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelectorAll('.area-item').forEach(item => {
+      item.addEventListener('click', () => {
+        document.querySelectorAll('.area-item').forEach(i => i.classList.remove('selected'));
+        item.classList.add('selected');
+        const docName = item.querySelector('span').textContent;
+        const docId = docName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+        // Guarda el docId en sessionStorage para usarlo en la siguiente pantalla
+        sessionStorage.setItem('selectedDocId', docId);
+
+        fetch('http://localhost:3000/seleccionar-documento', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ docId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('documento seleccionado:', docId);
+          console.log('Respuesta Backend:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
+
 </body>
 </html>

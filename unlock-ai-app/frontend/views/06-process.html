@@ -53,5 +53,23 @@
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script>
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if(docId){
+        document.addEventListener("DOMContentLoaded", () => {
+        fetch('http://localhost:3000/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              const docSelected = document.querySelector('.doc-selected');
+              docSelected.querySelector('img').src = data.doc.icon;
+              docSelected.querySelector('span').textContent = data.doc.name;
+            }
+          });
+      });
+    }
+    
+  </script>
 </body>
 </html>
