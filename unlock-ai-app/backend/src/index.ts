@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Servir archivos estáticos del frontend
-app.use(express.static(path.join(__dirname, '../../frontend/public')));
+// app.use(express.static(path.join(__dirname, '../../frontend/public')));
 
 // Endpoint para registrar un área
 app.post("/registrar-area", async (req, res) => {
@@ -51,9 +51,9 @@ app.get("/documento-seleccionado", async (req, res) => {
 });
 
 // Fallback para rutas del frontend
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
-});
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
+// });
 
 // Levantar servidor
 app.listen(PORT, () => {

@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const path_1 = __importDefault(require("path"));
 const AreaController_1 = require("./controllers/AreaController");
 const DocumentController_1 = require("./controllers/DocumentController");
 const app = (0, express_1.default)();
@@ -24,7 +23,7 @@ const PORT = process.env.PORT || 3000;
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 // Servir archivos estáticos del frontend
-app.use(express_1.default.static(path_1.default.join(__dirname, '../../frontend/public')));
+// app.use(express.static(path.join(__dirname, '../../frontend/public')));
 // Endpoint para registrar un área
 app.post("/registrar-area", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -61,9 +60,9 @@ app.get("/documento-seleccionado", (req, res) => __awaiter(void 0, void 0, void 
     }
 }));
 // Fallback para rutas del frontend
-app.get('/*', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../../frontend/public', '01-splash.html'));
-});
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
+// });
 // Levantar servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
