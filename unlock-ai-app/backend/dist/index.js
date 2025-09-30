@@ -61,8 +61,8 @@ app.get("/documento-seleccionado", (req, res) => __awaiter(void 0, void 0, void 
     }
 }));
 // Fallback para rutas del frontend
-app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
+app.get('/*', (req, res) => {
+    res.sendFile(path_1.default.join(__dirname, '../../frontend/public', '01-splash.html'));
 });
 // Levantar servidor
 app.listen(PORT, () => {
