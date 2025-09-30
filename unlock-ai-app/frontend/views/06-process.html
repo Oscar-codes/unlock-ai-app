@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantalla 6 - Proceso IA</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/styles/process.css" rel="stylesheet">
+  <link href="../assets/styles/area.css" rel="stylesheet"> <!-- usamos el unificado -->
+  <link href="../assets/styles/process.css" rel="stylesheet">   <!-- estilos extra solo para esta pantalla -->
 </head>
 <body>
 
   <!-- Marca -->
   <header class="d-flex justify-content-end p-3">
-    <span class="site-brand">Ai.kodigo.org</span>
+    <span class="site-brand " href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
   </header>
 
   <main class="process-main text-center">
@@ -24,15 +25,15 @@
       </div>
     </div>
 
-    <!-- Espacio para robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
-      <span>Espacio para robot</span>
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
     </div>
 
     <!-- Texto guía -->
     <p class="instruction">Presiona sobre el botón <span class="highlight">Comenzar</span></p>
 
-    <!-- Icono de documento seleccionado -->
+    <!-- Documento seleccionado -->
     <div class="doc-selected">
       <img src="../assets/icons/curriculos.png" alt="Currículos">
       <span>CURRÍCULOS</span>
@@ -40,8 +41,12 @@
 
     <!-- Botones -->
     <div class="buttons-group">
-      <button class="btn btn-start" onclick="location.href='./07-preview.html'">Comenzar</button>
-      <button class="btn btn-back"  onclick="location.href='./05-documents.html'">⟲ Regresar</button>
+      <button class="btn btn-next" onclick="location.href='./07-preview.html'">
+        Comenzar <span class="arrow">→</span>
+      </button>
+      <button class="btn btn-back" onclick="location.href='./05-documents.html'">
+        ⟲ Regresar
+      </button>
     </div>
   </main>
 
@@ -58,7 +63,7 @@
 
     if(docId){
         document.addEventListener("DOMContentLoaded", () => {
-        fetch('http://localhost:3000/documento-seleccionado')
+        fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
             if (data.success && data.doc) {

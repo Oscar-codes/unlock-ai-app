@@ -1,21 +1,4 @@
-/* Fondo general */
-body {
-  min-height: 100vh;
-  margin: 0;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Marca */
-.site-brand {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #666;
-}
-
-/* Contenido principal */
+/* ===== Contenido principal ===== */
 .preview-main {
   flex: 1;
   display: flex;
@@ -25,64 +8,24 @@ body {
   gap: 2vh;
 }
 
-/* Parte superior con robot y burbuja */
-.top-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5vh;
-}
-
-/* Robot */
-.robot-space {
-  width: min(35vw, 260px);
-  height: min(25vh, 200px);
-  background: #ddd;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1rem;
-}
-
-/* Burbuja */
-.chat-container { width: 90%; max-width: 700px; }
-.chat-bubble {
-  background: #EDE0FF;
-  padding: 1.2rem 1.5rem;
-  border-radius: 20px;
-  font-size: clamp(1rem, 2vh, 1.3rem);
-  line-height: 1.5;
-  text-align: center;
-  animation: floatChat 4s ease-in-out infinite;
-}
-@keyframes floatChat {
-  0%, 100% { transform: translateY(0px); }
-  25% { transform: translateY(-5px); }
-  75% { transform: translateY(5px); }
-}
-
 /* QR */
 .qr-container img {
-  width: 160px;
+  width: 180px;
   height: auto;
   margin: 2vh 0;
 }
 
-/* Instrucción */
-.instruction {
-  font-size: 1.1rem;
-  color: #333;
-}
-.instruction .highlight {
-  color: #9b4dff;
-  font-weight: 600;
-}
-
 /* Documento previsualizado */
-.doc-preview img {
-  width: min(60vw, 360px);
-  border-radius: 10px;
+.doc-preview {
+  width: 50%;
+  max-width: 600px;
   margin: 2vh 0;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.doc-preview iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 /* Botones */
@@ -90,18 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5vh;
-}
-.btn-extract {
-  background: linear-gradient(90deg, #9b4dff, #4f91ff);
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding: 0.8rem 2.5rem;
-  border-radius: 30px;
-}
-.btn-extract:hover {
-  background: linear-gradient(90deg, #7a39cc, #3a6fd9);
+  margin-top: 2vh;
 }
 .btn-back {
   background: transparent;
@@ -110,46 +42,20 @@ body {
   font-weight: 600;
   font-size: 1.1rem;
   padding: 0.6rem 2rem;
-  border-radius: 30px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
 }
-.btn-back:hover { background: #f3eaff; }
-
-/* Footer */
-.agent-footer {
-  position: relative;
-  width: 100%;
-  height: 920px; /* altura de tu imagen */
-  background: url("../images/WAVES BCK.png") no-repeat center bottom;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+.btn-back:hover {
+  background: #f3eaff;
 }
 
-.footer-overlay {
-  padding-bottom: 20px;
-}
-.footer-logo {
-  width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
-  opacity: 0.95;
-
-  /* Para centrar en el medio */
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* ===== Ajuste para totem (portrait 1080x1920) ===== */
+/* ===== Ajustes responsive ===== */
 @media (orientation: portrait) {
-  .areas-grid { grid-template-columns: repeat(2, 1fr); }
-  .btn-next { font-size: 1.6rem; padding: 1rem 3rem; }
+  .qr-container img { width: 200px; }
+  .doc-preview iframe { height: 600px; }
 }
 
-/* ===== Ajuste para monitor (landscape 1920x1080) ===== */
 @media (orientation: landscape) {
-  .areas-grid { grid-template-columns: repeat(3, 1fr); }
-  .btn-next { font-size: 1.4rem; }
+  .qr-container img { width: 160px; }
+  .doc-preview iframe { height: 400px; }
 }

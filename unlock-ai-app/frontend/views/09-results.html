@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pantalla 9 - Resultados</title>
-  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/styles/results.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/styles/results.css" />
 </head>
 <body>
 
@@ -16,36 +16,44 @@
 
   <main class="results-main text-center">
 
-    <!-- Robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
-      <span>Espacio para robot</span>
+    <!-- Robot éxito -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 5 check.gif" alt="Robot IA" class="robot-img" />
     </div>
 
     <!-- Burbuja -->
     <div class="chat-container">
       <div class="chat-bubble">
-        La información ha sido extraída exitosamente,<br>
+        La información ha sido extraída exitosamente,<br />
         puedes revisar el resultado escaneando el siguiente QR
       </div>
     </div>
 
     <!-- QR -->
     <div class="qr-container">
-      <img src="../assets/images/sample-qr.png" alt="QR resultado">
+      <img id="qr-img" src="../assets/images/sample-qr.png" alt="QR resultado" />
     </div>
 
-    <!-- Contenedor para tablas generadas dinámicamente -->
-    <div class="table-container" id="defaultTable"></div>
+    <!-- Tabla de resultados -->
+    <div class="table-container shadow-sm">
+      <div class="table-wrap">
+        <table id="resultsTable" class="table table-striped table-hover table-bordered align-middle">
+          <!-- Se llena por JS -->
+        </table>
+      </div>
+    </div>
 
-    <!-- Botón -->
-    <button class="btn btn-next" onclick="location.href='./10-learnmore.html'">Siguiente <span class="arrow">→</span></button>
+    <!-- CTA -->
+    <button class="btn btn-next" onclick="location.href='./10-learnmore.html'">
+      Siguiente <span class="arrow">→</span>
+    </button>
 
   </main>
 
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo" />
     </div>
   </footer>
 

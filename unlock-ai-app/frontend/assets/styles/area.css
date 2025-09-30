@@ -27,13 +27,16 @@ body {
 
 /* Espacio para robot */
 .robot-space {
-  width: min(40vw, 320px);
-  height: min(30vh, 260px);
-  background: #ddd;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2vh;
+}
+.robot-space img.robot-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Chat bubble */
@@ -80,6 +83,9 @@ body {
   align-items: center;
   gap: 1vh;
   cursor: pointer;
+  padding: 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
 }
 .area-item img {
   width: 48px;
@@ -90,48 +96,56 @@ body {
   font-weight: 600;
   color: #000;
 }
+.area-item:hover {
+  transform: scale(1.05);
+}
+
+/* Estado seleccionado */
+.area-item.selected {
+  transform: scale(1.1);
+  background: #f3e6ff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(155, 77, 255, 0.4);
+}
+.area-item.selected span {
+  color: #9b4dff;
+}
 
 /* Botón siguiente */
 .btn-next {
-background: #9b4dff;
+  background: #9b4dff;
   border: none;
   font-weight: 700;
   font-size: clamp(1.2rem, 2.2vh, 1.6rem);
   padding: 0.8rem 2.5rem;
   border-radius: 12px;
+  color: #fff;
 }
-
 .btn-next .arrow {
   margin-left: 8px;
   font-size: 1.2rem;
 }
 .btn-next:hover {
   background: #7a39cc;
+  color: #fff;
 }
-
 
 /* Footer */
 .agent-footer {
   position: relative;
   width: 100%;
-  height: 920px; /* altura de tu imagen */
+  height: 920px;
   background: url("../images/WAVES BCK.png") no-repeat center bottom;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-
-.footer-overlay {
-  padding-bottom: 20px;
-}
 .footer-logo {
   width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
+  max-width: 80%;
+  height: auto;
   opacity: 0.95;
-
-  /* Para centrar en el medio */
   position: absolute;
   top: 60%;
   left: 50%;
@@ -140,12 +154,18 @@ background: #9b4dff;
 
 /* ===== Ajuste para totem (portrait 1080x1920) ===== */
 @media (orientation: portrait) {
-  .areas-grid { grid-template-columns: repeat(2, 1fr); }
+  .robot-space img.robot-img { max-width: 320px; }
+  .areas-grid { grid-template-columns: repeat(2, 1fr); gap: 4vh 4vw; }
   .btn-next { font-size: 1.6rem; padding: 1rem 3rem; }
+  .chat-bubble { font-size: 1.4rem; }
+  .instruction { font-size: 1.5rem; }
 }
 
 /* ===== Ajuste para monitor (landscape 1920x1080) ===== */
 @media (orientation: landscape) {
-  .areas-grid { grid-template-columns: repeat(3, 1fr); }
+  .robot-space img.robot-img { max-width: 240px; }
+  .areas-grid { grid-template-columns: repeat(3, 1fr); gap: 3vh 6vw; }
   .btn-next { font-size: 1.4rem; }
+  .chat-bubble { font-size: 1.2rem; }
+  .instruction { font-size: 1.3rem; }
 }

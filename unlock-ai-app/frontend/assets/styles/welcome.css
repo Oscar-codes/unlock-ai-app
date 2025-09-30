@@ -1,3 +1,5 @@
+/* welcome.css */
+
 /* Fondo degradado */
 body {
   min-height: 100vh;
@@ -7,22 +9,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: 'Segoe UI',sans-serif;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/*Header*/
+/* Header */
 header {
- padding: 2vh 4vw;
- font-size: 1.5rem;
+  padding: 2vh 4vw;
+  font-size: 1.5rem;
 }
 
-/* Marca superior */
 .site-brand {
   font-size: 1.5rem;
   font-weight: bold;
   color: #ccc;
 }
-
 
 /* Icono central */
 .main-icon {
@@ -31,24 +31,27 @@ header {
   margin-bottom: 5vh;
 }
 
-/* Card de curso */
+/* Card */
 .course-card {
   border: 3px solid #4a00e0;
   border-radius: 20px;
   overflow: hidden;
-  width: 320px;
+  width: 520px;
   max-width: 80vw;
   margin: 2rem auto;
   box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  transition: transform 0.6s ease;
 }
 
-/* Header */
+.carousel-item.active .course-card {
+  transform: scale(1.05);
+}
+
 .course-card-header {
-  background: linear-gradient(90deg, #0056FF, #4A00E0);
+  background: linear-gradient(90deg, #4e7bd3, #4A00E0);
   padding: 1.5rem;
   text-align: center;
 }
-
 .course-card-header h3 {
   color: #fff;
   font-size: 1.5rem;
@@ -56,13 +59,11 @@ header {
   font-weight: bold;
 }
 
-/* Body */
 .course-card-body {
   background: #ffffff;
-  padding: 2rem 2rem;
+  padding: 2rem;
   text-align: center;
 }
-
 .course-card-body p {
   color: #000;
   font-size: 1rem;
@@ -70,22 +71,17 @@ header {
   margin: 0;
 }
 
-
-/* ===== Carrusel ===== */
+/* Carrusel */
 #coursesCarousel {
   width: min(78vw, 860px);
   margin: 0 auto;
 }
-
-/* Centrar contenido dentro de cada slide */
 .carousel-item {
   display: flex;
   justify-content: center;
   align-items: stretch;
   padding: 1vh 0;
 }
-
-/* Indicadores visibles sobre fondo degradado */
 .carousel-indicators [data-bs-target] {
   background-color: rgba(255,255,255,0.9);
 }
@@ -135,40 +131,27 @@ header {
 
 /* Footer logo */
 .footer-logo {
-  width: 180px;
+  display: block;
+  bottom: 600px;
+  margin: 0 auto 2vh auto;
+  width: 120px;
   opacity: 0.8;
 }
 
-
 /* ===== Ajuste para portrait (1080x1920) ===== */
 @media (orientation: portrait) {
-  /* Icono central más grande en vertical */
-  .main-icon { 
-    width: min(25vw, 300px); 
-  }
+  .main-icon { width: min(40vw, 380px); }
+  #coursesCarousel, .slide-btn-container { width: 90vw; }
+  .course-card-header h3 { font-size: 2.8rem; }
+  .course-card-body p { font-size: 1.8rem; line-height: 2.2rem; }
+  .slide-btn { height: 100px; }
+  .slide-handle { width: 90px; height: 90px; }
+}
 
-  /* Carrusel y botón ocupan más ancho en vertical */
-  #coursesCarousel,
-  .slide-btn-container { 
-    width: min(80vw, 1000px); 
-  }
-
-  /* Botón más alto en portrait */
-  .slide-btn-container { 
-    height: 120px; 
-  }
-
-  /* Handler proporcional al alto del botón */
-  .slide-handle { 
-    width: 80px; 
-  }
-
-  /* Tipografía más grande para aprovechar altura */
-  .course-card-header h3 {
-    font-size: 2.4rem;
-  }
-  .course-card-body p {
-    font-size: 1.6rem;
-    line-height: 1.8;
-  }
+/* ===== Ajuste para landscape (1920x1080) ===== */
+@media (orientation: landscape) {
+  .main-icon { width: min(20vw, 280px); }
+  #coursesCarousel { width: 70vw; }
+  .course-card-header h3 { font-size: 2rem; }
+  .course-card-body p { font-size: 1.3rem; }
 }

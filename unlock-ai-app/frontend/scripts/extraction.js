@@ -18,7 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => activateStep(2), 6000);
   setTimeout(() => {
     statusText.textContent = "Extracción completada ✅";
+    //robotImg.src = "../assets/gif/Robot base 5 check.gif";
     // Aquí puedes redirigir a la siguiente pantalla
     window.location.href = "09-results.html";
   }, 9000);
 });
+
+
+// Nota: Los tiempos (3000ms, 6000ms, 9000ms) pueden ajustarse según sea necesario.

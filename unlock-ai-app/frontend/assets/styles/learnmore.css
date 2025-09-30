@@ -1,4 +1,4 @@
-/* Fondo general */
+/* ===== General ===== */
 body {
   min-height: 100vh;
   margin: 0;
@@ -10,63 +10,58 @@ body {
 
 /* Marca */
 .site-brand {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #666;
 }
 
-/* Contenido principal */
+/* Contenido */
 .learnmore-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vh 4vw;
-  gap: 2vh;
+  justify-content: center;
+  gap: 4vh;
+  padding: 2vh 5vw;
+  text-align: center;
 }
 
 /* Burbuja */
-.chat-container { width: 90%; max-width: 700px; }
+.chat-container { width: 95%; max-width: 800px; }
 .chat-bubble {
   background: #EDE0FF;
-  padding: 1.5rem 2rem;
-  border-radius: 20px;
-  font-size: clamp(1rem, 2vh, 1.3rem);
+  padding: 2rem 2.5rem;
+  border-radius: 25px;
+  font-size: clamp(1.1rem, 2vh, 1.4rem);
   line-height: 1.6;
-  text-align: center;
   animation: floatChat 4s ease-in-out infinite;
 }
 @keyframes floatChat {
-  0%,100% { transform: translateY(0px); }
-  25% { transform: translateY(-5px); }
-  75% { transform: translateY(5px); }
+  0%,100% { transform: translateY(0); }
+  25% { transform: translateY(-6px); }
+  75% { transform: translateY(6px); }
 }
 
 /* Robot */
-.robot-space {
-  width: min(40vw, 320px);
-  height: min(30vh, 260px);
-  background: #ddd;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1rem;
-  margin: 2vh 0;
+.robot-space img {
+  width: min(40vw, 300px);
+  height: auto;
 }
 
 /* Botones */
 .buttons-group {
   display: flex;
   flex-direction: column;
-  gap: 1.5vh;
-  margin-top: 2vh;
+  gap: 2vh;
 }
 .btn-more {
   background: linear-gradient(90deg, #9b4dff, #4f91ff);
   border: none;
   font-weight: 700;
-  font-size: 1.2rem;
-  padding: 0.8rem 2.5rem;
-  border-radius: 30px;
+  font-size: 1.3rem;
+  padding: 1rem 3rem;
+  border-radius: 35px;
   color: #fff;
 }
 .btn-more:hover { background: linear-gradient(90deg, #7a39cc, #3a6fd9); }
@@ -76,47 +71,43 @@ body {
   border: 2px solid #9b4dff;
   color: #9b4dff;
   font-weight: 600;
-  font-size: 1.1rem;
-  padding: 0.6rem 2rem;
-  border-radius: 30px;
+  font-size: 1.2rem;
+  padding: 0.8rem 2.5rem;
+  border-radius: 35px;
 }
 .btn-retry:hover { background: #f3eaff; }
+
 /* Footer */
 .agent-footer {
   position: relative;
   width: 100%;
-  height: 920px; /* altura de tu imagen */
+  height: 30vh;
   background: url("../images/WAVES BCK.png") no-repeat center bottom;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
-
-.footer-overlay {
-  padding-bottom: 20px;
-}
 .footer-logo {
-  width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
-  opacity: 0.95;
-
-  /* Para centrar en el medio */
+  width: 200px;
+  max-width: 80%;
   position: absolute;
-  top: 60%;
+  bottom: 10%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
+  opacity: 0.95;
 }
 
-/* ===== Ajuste para totem (portrait 1080x1920) ===== */
+/* ===== Ajustes para totem (1080x1920) ===== */
 @media (orientation: portrait) {
-  .areas-grid { grid-template-columns: repeat(2, 1fr); }
-  .btn-next { font-size: 1.6rem; padding: 1rem 3rem; }
+  .chat-bubble { font-size: 1.5rem; }
+  .btn-more, .btn-retry { font-size: 1.4rem; }
 }
 
-/* ===== Ajuste para monitor (landscape 1920x1080) ===== */
+/* ===== Ajustes para monitor (1920x1080) ===== */
 @media (orientation: landscape) {
-  .areas-grid { grid-template-columns: repeat(3, 1fr); }
-  .btn-next { font-size: 1.4rem; }
+  .learnmore-main { gap: 3vh; }
+  .chat-bubble { font-size: 1.2rem; }
+  .btn-more, .btn-retry { font-size: 1.2rem; }
 }
+

@@ -1,31 +1,39 @@
-/* Fondo general */
+/* General */
 body {
-  min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #000;
 }
 
-/* Marca superior */
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
 .site-brand {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.6rem);
   font-weight: 600;
   color: #666;
 }
 
-/* Contenido principal */
+/* Main */
 .agent-main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vh 4vw;
-  gap: 2vh;
+  align-items: center;
+  gap: 3vh;
+  padding: 5vh 4vw 8vh;
+  text-align: center;
 }
 
-/* Contenedor de burbujas */
+/* Chat */
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -33,73 +41,46 @@ body {
   width: 90%;
   max-width: 700px;
 }
-
-/* Estilo de burbuja */
 .chat-bubble {
   background: #EDE0FF;
-  color: #000;
-  padding: 1.2rem 1.5rem;
   border-radius: 20px;
-  text-align: left;
-  font-size: clamp(1rem, 2vh, 1.4rem);
+  padding: 1.2rem 1.5rem;
+  font-size: clamp(1.2rem, 2.2vh, 2rem);
   line-height: 1.5;
   animation: floatChat 4s ease-in-out infinite;
 }
 
-/* Animación flotante */
+/* Animación */
 @keyframes floatChat {
-  0%   { transform: translateY(0px); }
-  25%  { transform: translateY(-5px); }
-  50%  { transform: translateY(0px); }
-  75%  { transform: translateY(5px); }
-  100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  75% { transform: translateY(5px); }
 }
 
-/* Delays distintos para simular conversación */
-.chat-bubble:nth-child(1) { animation-delay: 0s; }
-.chat-bubble:nth-child(2) { animation-delay: 1s; }
-
-/* Espacio para robot */
-.robot-space {
-  width: min(40vw, 320px);
-  height: min(30vh, 280px);
-  background: #ddd;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Robot */
+.robot-space img {
+  width: min(40vw, 300px);
+  height: auto;
 }
 
-/* Botón Probar IA */
+/* Botón */
 .btn-test {
-  background: #9b4dff;
+  background: #8c56d4;
   border: none;
   font-weight: 700;
-  font-size: clamp(1.2rem, 2.2vh, 1.6rem);
-  padding: 0.8rem 2.5rem;
+  font-size: clamp(1.4rem, 2.4vh, 2rem);
+  padding: 1rem 3rem;
   border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
-.btn-test:hover {
-  background: #7a39cc;
-}
+.btn-test:hover { background: #7a39cc; }
 
-/* Texto y selector de idioma */
-.small-text {
-  font-size: 1rem;
+.secondary-text {
+  font-size: clamp(1rem, 1.8vh, 1.4rem);
   color: #333;
+  
 }
-.lang-switch {
-  font-size: 0.95rem;
-}
-.lang-switch a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 600;
-}
-.lang-switch a.active { color: #9b4dff; }
-
 
 /* Footer */
 .agent-footer {
@@ -124,22 +105,22 @@ body {
 
   /* Para centrar en el medio */
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 
-/* ===== Ajuste para totem (portrait 1080x1920) ===== */
+/* Portrait */
 @media (orientation: portrait) {
-  .chat-container { max-width: 80%; }
-  .robot-space { width: 60vw; height: 30vh; }
-  .btn-test { font-size: 1.6rem; padding: 1rem 3rem; }
+  .chat-container { max-width: 85%; }
+  .robot-space img { width: 60vw; }
+  .btn-test { font-size: 1.8rem; padding: 1.2rem 3.5rem; }
 }
 
-/* ===== Ajuste para monitor (landscape 1920x1080) ===== */
+/* Landscape */
 @media (orientation: landscape) {
   .chat-container { max-width: 50%; }
-  .robot-space { width: 30vw; height: 40vh; }
-  .btn-test { font-size: 1.4rem; padding: 0.8rem 2rem; }
+  .robot-space img { width: 30vw; }
+  .btn-test { font-size: 1.4rem; padding: 1rem 2.5rem; }
 }

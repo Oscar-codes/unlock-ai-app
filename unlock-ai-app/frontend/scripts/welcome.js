@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // activar nuevo item e indicator
     items[currentIndex].classList.add("active");
     indicators[currentIndex].classList.add("active");
-  }, 5000); // cambia cada 5s
+  }, 6000); // cambia cada 5s
 });
 
 

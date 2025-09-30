@@ -24,15 +24,18 @@ body {
   padding: 2vh 4vw;
   gap: 2vh;
 }
-
-/* Robot */
+/* Espacio para robot */
 .robot-space {
-  width: min(35vw, 260px);
-  height: min(25vh, 200px);
-  background: #ddd;
-  border-radius: 20px;
-  font-size: 1rem;
-  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+.robot-space img.robot-img {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Burbuja */

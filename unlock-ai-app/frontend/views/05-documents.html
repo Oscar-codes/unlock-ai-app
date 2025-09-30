@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pantalla 3 - Selección de Área</title>
+  <title>Pantalla 5 - Selección de Documento</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/styles/area.css" rel="stylesheet">
 </head>
@@ -11,20 +11,20 @@
 
   <!-- Marca en la esquina superior derecha -->
   <header class="d-flex justify-content-end p-3">
-    <span class="site-brand">Ai.kodigo.org</span>
+    <span class="site-brand " href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
   </header>
 
   <main class="area-main text-center">
 
-    <!-- Espacio para robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
-      <span>Espacio para robot</span>
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 3 hablando.gif" alt="Robot IA" class="robot-img">
     </div>
 
     <!-- Mensaje tipo burbuja -->
     <div class="chat-container">
       <div class="chat-bubble">
-        Tareas como leer todo tipo de documentos, y extraer de forma automática los datos que nos interesan, 
+        Tareas como leer todo tipo de documentos, y extraer de forma automática los datos que nos interesan,
         y luego ordenarlos en un formato que nos sea útil.
       </div>
     </div>
@@ -32,11 +32,11 @@
     <!-- Instrucción -->
     <p class="instruction">Selecciona un tipo de documento de tu interés</p>
 
-    <!-- Grid de áreas -->
+    <!-- Grid de documentos -->
     <div class="areas-grid">
       <div class="area-item">
         <img src="../assets/icons/curriculos.png" alt="Currículos">
-        <span>CURRICULOS</span>
+        <span>CURRÍCULOS</span>
       </div>
       <div class="area-item">
         <img src="../assets/icons/contratos.png" alt="Contratos">
@@ -66,12 +66,14 @@
     </button>
   </main>
 
- <!-- Footer -->
+  <!-- Footer -->
   <footer class="text-center footer agent-footer">
     <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI" class="footer-logo">
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+
+  <!-- Script selección de documento -->
   <script>
     document.querySelectorAll('.area-item').forEach(item => {
       item.addEventListener('click', () => {
@@ -83,7 +85,7 @@
         // Guarda el docId en sessionStorage para usarlo en la siguiente pantalla
         sessionStorage.setItem('selectedDocId', docId);
 
-        fetch('http://localhost:3000/seleccionar-documento', {
+        fetch('https://unlock-ai-app-7cvq.onrender.com/seleccionar-documento', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ docId })

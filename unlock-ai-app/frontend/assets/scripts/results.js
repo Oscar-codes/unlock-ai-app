@@ -28,7 +28,7 @@ const documentData = {
     title: 'Encuesta para Estudiantes',
     description: 'Encuesta para recopilar opiniones de estudiantes.',
     url: 'https://example.com/encuesta.pdf'
-  }
+  },
   pruebas: {
     title: 'Encuesta Futuro Tech IA',
     description: 'Encuesta sobre percepciones y expectativas de la IA.',

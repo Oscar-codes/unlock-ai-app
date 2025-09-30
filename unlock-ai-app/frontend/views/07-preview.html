@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pantalla 6 - Previsualización</title>
+  <title>Pantalla 7 - Previsualización</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
-  <link href="../assets/styles/preview.css" rel="stylesheet">
+  <link href="../assets/styles/area.css" rel="stylesheet"> <!-- estilos unificados -->
+  <link href="../assets/styles/preview.css" rel="stylesheet">   <!-- estilos específicos -->
 </head>
 <body>
 
@@ -16,16 +17,16 @@
 
   <main class="preview-main text-center">
 
-    <!-- Burbujas y robot -->
-    <div class="top-section">
-      <div class="robot-space d-flex align-items-center justify-content-center">
-        <span>Espacio para robot</span>
-      </div>
-      <div class="chat-container">
-        <div class="chat-bubble">
-          Este es el tipo de documento elegido.<br>
-          Puedes revisarlo escaneando el QR.
-        </div>
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
+    </div>
+
+    <!-- Burbuja -->
+    <div class="chat-container">
+      <div class="chat-bubble">
+        Este es el tipo de documento elegido.<br>
+        Puedes revisarlo escaneando el QR.
       </div>
     </div>
 
@@ -41,13 +42,18 @@
 
     <!-- Documento previsualizado -->
     <div class="doc-preview">
-      <iframe src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf" style="width:100%; height:300px;" frameborder="0"></iframe>
+      <iframe src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
+        frameborder="0"></iframe>
     </div>
 
     <!-- Botones -->
     <div class="buttons-group">
-      <button class="btn btn-extract" onclick="location.href='./08-extraccion.html'">Extraer</button>
-      <button class="btn btn-back"    onclick="location.href='./06-process.html'">⟲ Regresar</button>
+      <button class="btn btn-next" onclick="location.href='./08-extraccion.html'">
+        Extraer <span class="arrow">→</span>
+      </button>
+      <button class="btn btn-back" onclick="location.href='./06-process.html'">
+        ⟲ Regresar
+      </button>
     </div>
   </main>
 
@@ -59,13 +65,12 @@
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
-
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
     if(docId){
         document.addEventListener("DOMContentLoaded", () => {
-        fetch('http://localhost:3000/documento-seleccionado')
+        fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
             if (data.success && data.doc) {

@@ -20,7 +20,7 @@ const DocumentController_1 = require("./controllers/DocumentController");
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
 // Middlewares
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({ origin: '*' }));
 app.use(body_parser_1.default.json());
 // Servir archivos estáticos del frontend
 // app.use(express.static(path.join(__dirname, '../../frontend/public')));
