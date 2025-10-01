@@ -217,17 +217,41 @@ document.addEventListener('DOMContentLoaded', function() {
           </tr>
           <tr>
             <th>Categoría</th>
-            <th>Elemento/Campo Solicitado</th>
-            <th>Objetivo del Campo (Según el enunciado)</th>
+            <th>Información/Pregunta Solicitada</th>
+            
           </tr>
         </thead>
         <tbody>
-          <tr><td>Título del Documento</td><td>Encuesta para estudiantes</td><td>N/A</td></tr>
-          <tr><td>Propósito Principal</td><td>Tu opinión es muy importante para nosotros. Tómate un tiempo para responder y contarnos lo que piensas.</td><td>Animar a la participación y destacar la relevancia de las respuestas</td></tr>
-          <tr><td>Sección A</td><td>Tres actividades que disfruté</td><td>Identificar los aspectos o experiencias que resultaron placenteros para el estudiante</td></tr>
-          <tr><td>Sección B</td><td>Dos personas que me gustaría mencionar por su desempeño y dedicación</td><td>Reconocer al personal que destacó (incluyendo profesores, preceptores, secretarios, directores)</td></tr>
-          <tr><td>Sección C</td><td>Una cosa que fue difícil para mí y quisiera que en el futuro cambie</td><td>Señalar obstáculos o problemas experimentados y sugerir cambios futuros</td></tr>
-          <tr><td>Sección D</td><td>El próximo año me gustaría...</td><td>Explorar deseos, expectativas o metas del estudiante para el siguiente ciclo</td></tr>
+          <tr>
+            <td><strong>Título Principal</strong></td>
+            <td>Encuesta para estudiantes</td>
+            
+          </tr>
+          <tr>
+            <td><strong>Propósito</strong></td>
+            <td>Recolectar la opinión de los estudiantes al final del periodo escolar.</td>
+            
+          </tr>
+          <tr>
+            <td><strong>Sección A</strong></td>
+            <td>Tres actividades que disfruté</td>
+            
+          </tr>
+          <tr>
+            <td><strong>Sección B</strong></td>
+            <td>Dos personas que me gustaría mencionar por su desempeño y dedicación (profesores, preceptores, secretarios, directores)</td>
+            
+          </tr>
+          <tr>
+            <td><strong>Sección C</strong></td>
+            <td>Una cosa que fue difícil para mi y quisiera que en el futuro cambie</td>
+            
+          </tr>
+          <tr>
+            <td><strong>Sección D</strong></td>
+            <td>El próximo año me gustaría...</td>
+            
+          </tr>
         </tbody>
       `);
     } 
