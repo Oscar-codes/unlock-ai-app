@@ -80,9 +80,9 @@ body {
 }
 .footer-logo {
   width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
-  opacity: 0.95;
+  max-width: 80%;       
+  height: auto;         
+  opacity: 0.95; 
 
   /* Para centrar en el medio */
   position: relative;
@@ -97,13 +97,13 @@ body {
 }
 
 /* Portrait (Totem 1080x1920) */
-@media (orientation: portrait) {
+ @media (orientation: portrait) {
   .qr-container img { width: 220px; }
   .courses-list li { font-size: 1.2rem; }
   .final-text { font-size: 1.4rem; }
-}
+} 
 
 /* Landscape (1920x1080) */
-@media (orientation: landscape) {
+ @media (orientation: landscape) {
   .final-main { max-width: 900px; margin: 0 auto; }
-}
+ }

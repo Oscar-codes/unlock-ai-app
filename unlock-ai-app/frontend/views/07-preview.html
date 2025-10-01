@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantalla 7 - Previsualización</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/styles/area.css" rel="stylesheet"> <!-- estilos unificados -->
-  <link href="../assets/styles/preview.css" rel="stylesheet">   <!-- estilos específicos -->
+  <link href="../assets/styles/preview.css" rel="stylesheet"> <!-- estilos específicos -->
+  <link href="../assets/styles/footer.css" rel="stylesheet">
 </head>
+
 <body>
 
-  
+<style>
+    /* Contenedor conjunto robot + burbuja */
+    .robot-chat-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem; /* espacio entre robot y burbuja */
+      flex-wrap: wrap; /* permite adaptarse en pantallas pequeñas */
+      
+    }
+
+    /* Robot */
+    .robot-space {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .robot-space img.robot-img {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Chat bubble */
+    .chat-container {
+      flex: 1 1 300px;
+      max-width: 700px;
+      display: flex;
+      justify-content: center;
+    }
+    .chat-bubble {
+      background: #EDE0FF;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      font-size: clamp(1rem, 2vh, 1.4rem);
+      line-height: 1.6;
+      text-align: center;
+      animation: floatChat 4s ease-in-out infinite;
+    }
+
+    @keyframes floatChat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
   <!-- Marca en la esquina superior derecha -->
   <header class="d-flex justify-content-end p-3">
     <a class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">AI.kodigo.org</a>
@@ -18,22 +67,21 @@
 
   <main class="preview-main text-center">
 
-    <!-- Robot -->
-    <div class="robot-space">
-      <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
-    </div>
-
-    <!-- Burbuja -->
-    <div class="chat-container">
-      <div class="chat-bubble">
-        Este es el tipo de documento elegido.<br>
-        Puedes revisarlo escaneando el QR.
+    <div class="robot-chat-row">
+      <div class="robot-space">
+        <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
+      </div>
+      <div class="chat-container">
+        <div class="chat-bubble">
+          Este es el tipo de documento elegido.<br>
+          Puedes revisarlo escaneando el QR.
+        </div>
       </div>
     </div>
-
     <!-- QR -->
     <div class="qr-container">
-      <img src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759177070/samples/unlockIA/QR/curriculos_qzcpwv.png" alt="Código QR">
+      <img src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759177070/samples/unlockIA/QR/curriculos_qzcpwv.png"
+        alt="Código QR">
     </div>
 
     <!-- Texto guía -->
@@ -43,7 +91,8 @@
 
     <!-- Documento previsualizado -->
     <div class="doc-preview">
-      <iframe src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
+      <iframe
+        src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
         frameborder="0"></iframe>
     </div>
 
@@ -52,16 +101,19 @@
       <button class="btn btn-next" onclick="location.href='./08-extraccion.html'">
         Extraer <span class="arrow">→</span>
       </button>
-      <button class="btn btn-back" onclick="location.href='./06-process.html'">
+      <button class="btn btn-back" onclick="location.href='./05-documents.html'">
         ⟲ Regresar
       </button>
     </div>
   </main>
 
+
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      <img
+        src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png"
+        alt="Unlock AI by Kodigo" class="footer-logo" href="./02-welcome.html">
     </div>
   </footer>
 
@@ -69,8 +121,8 @@
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
-    if(docId){
-        document.addEventListener("DOMContentLoaded", () => {
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
         fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
@@ -86,4 +138,5 @@
     }
   </script>
 </body>
+
 </html>
