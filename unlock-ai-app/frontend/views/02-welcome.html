@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome - Unlock AI</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/welcome.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="bg-gradient">
 
   <!-- Marca en la esquina superior izquierda -->
-  <header class="d-flex justify-content-end p-3">
+  <header class="welcome-header d-flex justify-content-end p-3">
     <a class="site-brand" href="https://www.AI.kodigo.org">AI.kodigo.org</a>
   </header>
 
@@ -18,9 +21,9 @@
   <main class="d-flex flex-column align-items-center text-center">
 
     <!-- Icono central -->
-    <img src="../assets/images/unlock-icon-white.png" alt="Unlock AI" class="main-icon mb-4" >
+    <img src="../assets/images/unlock-icon-white.png" alt="Unlock AI" class="main-icon mb-4">
 
-   <!-- Carrusel de cards -->
+    <!-- Carrusel de cards -->
     <div id="coursesCarousel" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -70,17 +73,18 @@
       </div>
 
       <!-- Indicadores (puntos) -->
-     <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="2"></button>
-        </div>
+      <!-- Indicadores -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#coursesCarousel" data-bs-slide-to="3"></button>
+      </div>
 
     </div>
 
     <!-- Slide button -->
-    <div class="slide-btn-container mt-5">
+    <div class="slide-btn-container">
       <div id="slideButton" class="slide-btn">
         <span class="slide-text">Slide to unlock</span>
         <span class="slide-handle">→</span>
@@ -94,7 +98,8 @@
     <img src="../assets/images/kodigo-logo.png" alt="Kodigo" class="footer-logo">
   </footer>
 
-  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/bootstrap.bundle.js"></script>
   <script src="../scripts/welcome.js"></script>
 </body>
+
 </html>
