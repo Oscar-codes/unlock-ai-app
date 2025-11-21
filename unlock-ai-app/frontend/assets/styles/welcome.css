@@ -1,174 +1,226 @@
-/* Fondo degradado */
-body {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #000000, #8C52FF, #FA7EF8);
-  background-position: fixed;
-  color: #fff;
+/* ===================================================================
+   WELCOME PAGE - Estilos específicos
+   Nota: Estilos comunes están en shared.css
+   =================================================================== */
+
+/* Main container - distribuir elementos verticalmente */
+main {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  font-family: 'Segoe UI',sans-serif;
+  justify-content: space-evenly;
+  padding: 9vh 0;
+  gap: 2vh;
 }
-
-/*Header*/
-header {
- padding: 2vh 4vw;
- font-size: 1.5rem;
-}
-
-/* Marca superior */
-.site-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ccc;
-}
-
 
 /* Icono central */
 .main-icon {
-  width: 30vh;
-  max-width: 260px;
-  margin-bottom: 5vh;
+  width: 50vh;
+  max-width: 500px;
+  margin-bottom: 2vh;
 }
 
-/* Card de curso */
+/* ===== COURSE CARDS ===== */
 .course-card {
-  border: 3px solid #4a00e0;
-  border-radius: 20px;
+  border: none;
+  border-radius: 26px;
   overflow: hidden;
-  width: 320px;
-  max-width: 80vw;
+  width: 500px;
+  max-width: 85vw;
   margin: 2rem auto;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Header */
 .course-card-header {
-  background: linear-gradient(90deg, #0056FF, #4A00E0);
-  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(18, 35, 249, 1) 0%, rgba(2, 230, 255, 0.92) 100%);
+  padding: 2rem 1.5rem;
   text-align: center;
 }
 
 .course-card-header h3 {
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin: 0;
   font-weight: bold;
+  line-height: 1.2;
 }
 
-/* Body */
 .course-card-body {
   background: #ffffff;
-  padding: 2rem 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
 }
 
 .course-card-body p {
   color: #000;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
 }
 
 
-/* ===== Carrusel ===== */
+
+/* ===== CAROUSEL ===== */
 #coursesCarousel {
   width: min(78vw, 860px);
-  margin: 0 auto;
+  margin: 2vh auto;
+  position: relative;
 }
 
-/* Centrar contenido dentro de cada slide */
+.carousel-inner {
+  position: relative;
+}
+
 .carousel-item {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  padding: 1vh 0;
+  padding: 2vh 0;
+  transition: all 0.4s ease;
 }
 
-/* Indicadores visibles sobre fondo degradado */
-.carousel-indicators [data-bs-target] {
-  background-color: rgba(255,255,255,0.9);
+/* Card activa - pasa al frente */
+.carousel-item.active .course-card {
+  transform: scale(1.08);
+  z-index: 10;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
+
+/* Cards inactivas - más pequeñas y con menos opacidad */
+.carousel-item:not(.active) .course-card {
+  transform: scale(0.92);
+  opacity: 0.7;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Transición suave para todas las cards */
+.course-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-indicators {
+  margin-bottom: -1rem;
+  z-index: 15;
+  position: relative;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 6px;
+}
+
+.carousel-indicators .active {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: drop-shadow(0 0 2px rgba(0,0,0,.6));
-  background-color: rgba(255,255,255,.75);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, .6));
+  background-color: rgba(255, 255, 255, .75);
   border-radius: 50%;
 }
 
-/* Slide button */
+
+/* ===== SLIDE TO UNLOCK BUTTON ===== */
 .slide-btn-container {
-  width: 300px;
-  max-width: 40vw;
+  width: 400px;
+  max-width: 80vw;
+  margin: 3vh auto 0;
 }
+
 .slide-btn {
   position: relative;
-  background: #9264ED;
-  border-radius: 50px;
-  height: 50px;
+  background: #533199;
+  border-radius: 113px;
+  height: 76px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
+
 .slide-text {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 0.9rem;
-  color: #fff;
+  font-size: 1.2rem;
+  color: #8b52ff;
+  font-weight: 700;
+  pointer-events: none;
+  z-index: 1;
 }
+
 .slide-handle {
   position: absolute;
-  left: 0;
-  top: 0;
-  height: 50px;
-  width: 50px;
-  background: #FA7EF8;
-  color: #8C52FF;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 66px;
+  width: 66px;
+  background: linear-gradient(180deg, rgba(146, 100, 237, 1) 0%, rgba(250, 126, 248, 1) 100%);
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  transition: left 0.3s;
+  font-size: 1.8rem;
+  transition: left 0.1s;
+  z-index: 2;
 }
 
-/* Footer logo */
+/* Footer logo override para welcome */
 .footer-logo {
   width: 180px;
   opacity: 0.8;
 }
 
 
-/* ===== Ajuste para portrait (1080x1920) ===== */
+/* ===== RESPONSIVE - PORTRAIT (1080x1920) ===== */
 @media (orientation: portrait) {
-  /* Icono central más grande en vertical */
-  .main-icon { 
-    width: min(25vw, 300px); 
+  .main-icon {
+    width: 50vh;
+    max-width: 663px;
   }
 
-  /* Carrusel y botón ocupan más ancho en vertical */
-  #coursesCarousel,
-  .slide-btn-container { 
-    width: min(80vw, 1000px); 
+  #coursesCarousel {
+    width: min(80vw, 1000px);
   }
 
-  /* Botón más alto en portrait */
-  .slide-btn-container { 
-    height: 120px; 
+  .course-card {
+    width: min(70vw, 600px);
   }
 
-  /* Handler proporcional al alto del botón */
-  .slide-handle { 
-    width: 80px; 
-  }
-
-  /* Tipografía más grande para aprovechar altura */
   .course-card-header h3 {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
   }
+
   .course-card-body p {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.8;
+  }
+
+  .slide-btn-container {
+    width: min(80vw, 700px);
+  }
+
+  .slide-btn {
+    height: 100px;
+  }
+
+  .slide-handle {
+    width: 90px;
+    height: 90px;
+    font-size: 2.5rem;
+  }
+
+  .slide-text {
+    font-size: 1.8rem;
   }
 }

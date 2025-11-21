@@ -1,31 +1,9 @@
-/* Fondo general */
-body {
-  min-height: 100vh;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  font-family: 'Segoe UI', sans-serif;
-}
+/* ===================================================================
+   AGENTS PAGE - Estilos específicos
+   Nota: Estilos comunes están en shared.css
+   =================================================================== */
 
-/* Marca superior */
-.site-brand {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #666;
-}
-
-/* Contenido principal */
-.agent-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2vh 4vw;
-  gap: 2vh;
-}
-
-/* Contenedor de burbujas */
+/* Contenedor de burbujas específico para agents */
 .chat-container {
   display: flex;
   flex-direction: column;
@@ -34,112 +12,17 @@ body {
   max-width: 700px;
 }
 
-/* Estilo de burbuja */
-.chat-bubble {
-  background: #EDE0FF;
-  color: #000;
-  padding: 1.2rem 1.5rem;
-  border-radius: 20px;
-  text-align: left;
-  font-size: clamp(1rem, 2vh, 1.4rem);
-  line-height: 1.5;
-  animation: floatChat 4s ease-in-out infinite;
-}
-
-/* Animación flotante */
-@keyframes floatChat {
-  0%   { transform: translateY(0px); }
-  25%  { transform: translateY(-5px); }
-  50%  { transform: translateY(0px); }
-  75%  { transform: translateY(5px); }
-  100% { transform: translateY(0px); }
-}
-
-/* Delays distintos para simular conversación */
-.chat-bubble:nth-child(1) { animation-delay: 0s; }
-.chat-bubble:nth-child(2) { animation-delay: 1s; }
-
-/* Espacio para robot */
-.robot-space {
-  width: min(40vw, 320px);
-  height: min(30vh, 280px);
-  background: #ddd;
-  border-radius: 20px;
-  color: #555;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Botón Probar IA */
-.btn-test {
-  background: #9b4dff;
-  border: none;
-  font-weight: 700;
-  font-size: clamp(1.2rem, 2.2vh, 1.6rem);
-  padding: 0.8rem 2.5rem;
-  border-radius: 12px;
-}
-.btn-test:hover {
-  background: #7a39cc;
-}
-
-/* Texto y selector de idioma */
-.small-text {
-  font-size: 1rem;
-  color: #333;
-}
+/* Selector de idioma */
 .lang-switch {
   font-size: 0.95rem;
 }
+
 .lang-switch a {
   text-decoration: none;
   color: #666;
   font-weight: 600;
 }
-.lang-switch a.active { color: #9b4dff; }
 
-
-/* Footer */
-.agent-footer {
-  position: relative;
-  width: 100%;
-  height: 920px; /* altura de tu imagen */
-  background: url("../images/WAVES BCK.png") no-repeat center bottom;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.footer-overlay {
-  padding-bottom: 20px;
-}
-.footer-logo {
-  width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
-  opacity: 0.95;
-
-  /* Para centrar en el medio */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-/* ===== Ajuste para totem (portrait 1080x1920) ===== */
-@media (orientation: portrait) {
-  .chat-container { max-width: 80%; }
-  .robot-space { width: 60vw; height: 30vh; }
-  .btn-test { font-size: 1.6rem; padding: 1rem 3rem; }
-}
-
-/* ===== Ajuste para monitor (landscape 1920x1080) ===== */
-@media (orientation: landscape) {
-  .chat-container { max-width: 50%; }
-  .robot-space { width: 30vw; height: 40vh; }
-  .btn-test { font-size: 1.4rem; padding: 0.8rem 2rem; }
+.lang-switch a.active {
+  color: #9b4dff;
 }
