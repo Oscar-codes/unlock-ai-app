@@ -9,8 +9,10 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: 9vh 0;
+  padding: 9vh 0 2vh 0;
   gap: 2vh;
+  min-height: 0;
+  /* Permite que el contenido se ajuste */
 }
 
 /* Icono central */
@@ -176,6 +178,13 @@ main {
 }
 
 /* Footer logo override para welcome */
+footer {
+  position: relative;
+  z-index: 20;
+  padding: 9vh 0;
+  margin-top: auto;
+}
+
 .footer-logo {
   width: 180px;
   opacity: 0.8;
@@ -183,7 +192,7 @@ main {
 
 
 /* ===== RESPONSIVE - PORTRAIT (1080x1920) ===== */
-@media (orientation: portrait) {
+@media (orientation: portrait) and (min-width: 1025px) {
   .main-icon {
     width: 50vh;
     max-width: 663px;
@@ -222,5 +231,223 @@ main {
 
   .slide-text {
     font-size: 1.8rem;
+  }
+}
+
+/* ===== RESPONSIVE - TABLET (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-icon {
+    width: 35vh;
+    max-width: 350px;
+  }
+
+  .course-card {
+    width: 450px;
+    max-width: 85vw;
+  }
+
+  .slide-btn-container {
+    width: 350px;
+    max-width: 85vw;
+  }
+}
+
+/* ===== RESPONSIVE - MÓVIL MEDIANO (481px - 768px) ===== */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  main {
+    padding: 2vh 0 1vh 0;
+    gap: 0.5vh;
+  }
+
+  .main-icon {
+    width: 45vw;
+    max-width: 200px;
+    margin-bottom: 1vh;
+  }
+
+  .course-card {
+    width: 90vw;
+    max-width: 400px;
+    border-radius: 20px;
+    margin: 0.5rem auto;
+  }
+
+  .course-card-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .course-card-header h3 {
+    font-size: 1.4rem;
+  }
+
+  .course-card-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .course-card-body p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Carousel ajustes */
+  #coursesCarousel {
+    width: 95vw;
+    margin: 0.5vh auto;
+  }
+
+  .carousel-item {
+    padding: 0.5vh 0;
+  }
+
+  /* Card activa menos dramática */
+  .carousel-item.active .course-card {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .carousel-item:not(.active) .course-card {
+    transform: scale(0.95);
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+
+  /* Slide button */
+  .slide-btn-container {
+    width: 85vw;
+    max-width: 300px;
+    margin: 1vh auto 0;
+  }
+
+  .slide-btn {
+    height: 60px;
+  }
+
+  .slide-text {
+    font-size: 1rem;
+  }
+
+  .slide-handle {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 4vh 0;
+  }
+
+  .footer-logo {
+    width: 140px;
+  }
+}
+
+/* ===== RESPONSIVE - MÓVIL PEQUEÑO (320px - 480px) ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+  main {
+    padding: 1vh 0 1vh 0;
+    gap: 0.5vh;
+  }
+
+  .main-icon {
+    width: 55vw;
+    max-width: 235px;
+    margin-bottom: 0.5vh;
+  }
+
+  .course-card {
+    width: 92vw;
+    max-width: 340px;
+    border-radius: 18px;
+    margin: 0.3rem auto;
+  }
+
+  .course-card-header {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .course-card-header h3 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+  }
+
+  .course-card-body {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .course-card-body p {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Carousel ajustes */
+  #coursesCarousel {
+    width: 96vw;
+    margin: 0.5vh auto;
+  }
+
+  .carousel-item {
+    padding: 0.5vh 0;
+  }
+
+  /* Card activa más sutil */
+  .carousel-item.active .course-card {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .carousel-item:not(.active) .course-card {
+    transform: scale(0.96);
+    opacity: 0.75;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 7px;
+    height: 7px;
+    margin: 0 3px;
+  }
+
+  /* Slide button */
+  .slide-btn-container {
+    width: 90vw;
+    max-width: 280px;
+    margin: 0.5vh auto 0;
+  }
+
+  .slide-btn {
+    height: 56px;
+    border-radius: 100px;
+  }
+
+  .slide-text {
+    font-size: 0.9rem;
+  }
+
+  .slide-handle {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  /* Footer */
+  footer {
+    padding: 3vh 0;
+  }
+
+  .footer-logo {
+    width: 120px;
+  }
+
+  /* Header */
+  .welcome-header {
+    padding: 0.5rem !important;
+  }
+
+  .site-brand {
+    font-size: 0.85rem;
   }
 }
