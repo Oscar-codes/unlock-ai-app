@@ -20,7 +20,7 @@ body.bg-white {
 
 /* Fondo degradado (usado en welcome y final) - Diseño de Figma */
 body.bg-gradient {
-    background: linear-gradient(180deg,rgba(0, 0, 0, 1) 17%, rgba(140, 82, 255, 1) 76%, rgba(250, 126, 248, 1) 100%) !important;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 17%, rgba(140, 82, 255, 1) 76%, rgba(250, 126, 248, 1) 100%) !important;
     background-attachment: fixed;
     color: #fff;
 }
@@ -315,18 +315,21 @@ header.welcome-header .site-brand {
     position: relative;
     width: 100%;
     height: 920px;
-    background: url("../images/WAVES BCK.png") no-repeat center bottom;
+    background-image: url('../images/WAVES BCK.png');
     background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
     align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 3vh;
 }
 
 .footer-overlay {
     padding-bottom: 20px;
 }
 
-.footer-logo {
+.agent-footer .footer-logo {
     width: 250px;
     max-width: 80%;
     height: auto;
@@ -335,6 +338,8 @@ header.welcome-header .site-brand {
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: auto;
+    /* Logo can be clicked */
 }
 
 /* Variante centrada verticalmente (agents, area, documents) */
@@ -373,6 +378,8 @@ header.welcome-header .site-brand {
     align-items: center;
     padding: 2vh 4vw;
     gap: 2vh;
+    min-height: 0;
+    /* Permite que el contenido se ajuste y no empuje el footer */
 }
 
 /* Variante con text-center (agents, area, process, etc) */
@@ -452,8 +459,8 @@ header.welcome-header .site-brand {
     }
 
     .robot-space {
-        width: 60vw;
-        height: 30vh;
+        width: 29vw;
+        height: 14vh;
     }
 
     .qr-container img {
@@ -541,4 +548,142 @@ header.welcome-header .site-brand {
 /* Padding */
 .p-3 {
     padding: 2vh 4vw;
+}
+
+/* ===== RESPONSIVE - AGENT PAGE COMPONENTS ===== */
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .agent-footer {
+        height: 600px;
+    }
+
+    .agent-footer .footer-logo {
+        width: 160px;
+    }
+
+    .agent-main,
+    .area-main {
+        padding: 2vh 3vw;
+        gap: 1.5vh;
+    }
+}
+
+/* Mobile Medium */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+    .agent-footer {
+        height: 400px;
+    }
+
+    .agent-footer .footer-logo {
+        width: 140px;
+    }
+
+    .agent-main,
+    .area-main {
+        flex: 0 1 auto;
+        /* No expandir, permitir que el footer sea visible */
+        padding: 1.5vh 2vw;
+        gap: 1vh;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) and (orientation: portrait) {
+    .agent-footer {
+        height: 300px;
+    }
+
+    .agent-footer .footer-logo {
+        width: 120px;
+    }
+
+    .agent-main,
+    .area-main {
+        flex: 0 1 auto;
+        /* No expandir, permitir que el footer sea visible */
+        padding: 1vh 2vw;
+        gap: 0.8vh;
+    }
+}
+
+/* ===== RESPONSIVE - AREA/DOCUMENTS GRID ===== */
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .areas-grid {
+        /* Mantiene 3 columnas heredadas del estilo base */
+        gap: 2vh 3vw;
+        max-width: 700px;
+    }
+
+    .area-item img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .area-item span {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile Medium */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5vh 2vw;
+        width: 90vw;
+        max-width: 400px;
+    }
+
+    .area-item {
+        min-height: 140px;
+        padding: 1rem;
+    }
+
+    .area-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .area-item span {
+        font-size: 0.9rem;
+    }
+
+    .area-item.selected {
+        padding: 1rem;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) and (orientation: portrait) {
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1vh 1.5vw;
+        width: 95vw;
+        max-width: 360px;
+    }
+
+    .area-item {
+        min-height: 120px;
+        padding: 0.8rem;
+    }
+
+    .area-item img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .area-item span {
+        font-size: 0.8rem;
+    }
+
+    .area-item.selected {
+        padding: 0.8rem;
+        transform: scale(1.02);
+    }
+
+    .area-item:hover {
+        transform: translateY(-2px);
+    }
 }

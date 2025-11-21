@@ -26,3 +26,90 @@
 .lang-switch a.active {
   color: #9b4dff;
 }
+
+/* ===== RESPONSIVE - TABLET (769px - 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .chat-bubble {
+    max-width: 600px;
+    padding: 1.5rem;
+  }
+
+  .robot-space {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn-test {
+    width: 350px;
+    max-width: 80vw;
+  }
+}
+
+/* ===== RESPONSIVE - MÓVIL MEDIANO (481px - 768px) ===== */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .chat-bubble {
+    max-width: 85vw;
+    padding: 1.2rem;
+    font-size: 0.95rem;
+    margin: 1vh auto;
+  }
+
+  .robot-space {
+    width: 250px;
+    height: 250px;
+    margin: 2vh auto;
+  }
+
+  .btn-test {
+    width: 70vw;
+    max-width: 300px;
+    height: 50px;
+    font-size: 1rem;
+    margin: 2vh auto;
+  }
+
+  .small-text {
+    font-size: 0.85rem;
+    margin: 1.5vh 0;
+  }
+}
+
+/* ===== RESPONSIVE - MÓVIL PEQUEÑO (320px - 480px) ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+  .chat-bubble {
+    max-width: 90vw;
+    padding: 1rem;
+    font-size: 0.875rem;
+    margin: 0.8vh auto;
+    line-height: 1.4;
+  }
+
+  .robot-space {
+    width: 200px;
+    height: 200px;
+    margin: 1.5vh auto;
+    font-size: 0.85rem;
+  }
+
+  .btn-test {
+    width: 80vw;
+    max-width: 280px;
+    height: 48px;
+    font-size: 0.95rem;
+    margin: 1.5vh auto;
+  }
+
+  .small-text {
+    font-size: 0.8rem;
+    margin: 1.5vh 0;
+  }
+
+  /* Header adjustments */
+  header {
+    padding: 0.5rem !important;
+  }
+
+  .site-brand {
+    font-size: 0.85rem;
+  }
+}

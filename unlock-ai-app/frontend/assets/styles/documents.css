@@ -1,8 +1,114 @@
 /* ===================================================================
-   DOCUMENTS PAGE - Estilos específicos
+   AREA PAGE - Estilos específicos
    Nota: Todos los estilos están en shared.css
    Este archivo se mantiene para futura personalización específica
    =================================================================== */
 
 /* No hay estilos específicos para esta página */
 /* Todos los componentes usan shared.css */
+/* ===== MOBILE OPTIMIZATION - ROBOT + CHAT SIDE BY SIDE ===== */
+
+/* Mobile Medium */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+    .area-main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    /* Contenedor para robot + chat en horizontal */
+    .area-main .robot-space,
+    .area-main .chat-container {
+        grid-row: 1;
+    }
+
+    .area-main .robot-space {
+        grid-column: 1;
+        width: 35vw;
+        height: 35vw;
+        max-width: 150px;
+        max-height: 150px;
+        margin: 0;
+    }
+
+    .area-main .chat-container {
+        grid-column: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Wrapper virtual usando CSS Grid */
+    .area-main {
+        grid-template-columns: 35vw 1fr;
+        gap: 2vw;
+        align-items: start;
+    }
+
+    .area-main .chat-container .chat-bubble {
+        text-align: center;
+        font-size: 0.85rem;
+        padding: 1rem;
+        margin: 0;
+    }
+
+    /* Instruction y grid siguen en su posición normal */
+    .area-main .instruction {
+        grid-column: 1 / -1;
+    }
+
+    .area-main .areas-grid {
+        grid-column: 1 / -1;
+    }
+
+    .area-main .btn-next {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) and (orientation: portrait) {
+    .area-main {
+        display: grid;
+        grid-template-columns: 32vw 1fr;
+        gap: 1.5vw;
+        align-items: start;
+    }
+
+    .area-main .robot-space {
+        grid-column: 1;
+        grid-row: 1;
+        width: 32vw;
+        height: 32vw;
+        max-width: 130px;
+        max-height: 130px;
+        margin: 0;
+    }
+
+    .area-main .chat-container {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        margin: 0;
+    }
+
+    .area-main .chat-container .chat-bubble {
+        text-align: center;
+        font-size: 0.8rem;
+        padding: 0.8rem;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    /* Instruction y grid siguen en su posición normal */
+    .area-main .instruction {
+        grid-column: 1 / -1;
+    }
+
+    .area-main .areas-grid {
+        grid-column: 1 / -1;
+    }
+
+    .area-main .btn-next {
+        grid-column: 1 / -1;
+    }
+}
