@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantalla 9 - Resultados</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/results.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="bg-white">
 
   <!-- Marca -->
   <header class="d-flex justify-content-end p-3">
@@ -17,13 +20,13 @@
   <main class="results-main text-center">
 
     <!-- Robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
+    <div class="robot-space robot-small d-flex align-items-center justify-content-center">
       <span>Espacio para robot</span>
     </div>
 
     <!-- Burbuja -->
     <div class="chat-container">
-      <div class="chat-bubble">
+      <div class="chat-bubble chat-compact">
         La información ha sido extraída exitosamente,<br>
         puedes revisar el resultado escaneando el siguiente QR
       </div>
@@ -48,26 +51,47 @@
         </thead>
         <tbody>
           <tr>
-            <td>1</td><td>Juan Alfredo</td><td>Guzmán Hernández</td><td>25469812-7</td><td>7625-8569</td>
+            <td>1</td>
+            <td>Juan Alfredo</td>
+            <td>Guzmán Hernández</td>
+            <td>25469812-7</td>
+            <td>7625-8569</td>
           </tr>
           <tr>
-            <td>2</td><td>José Mauricio</td><td>Montalvo Arzú</td><td>04658972-6</td><td>7988-5542</td>
+            <td>2</td>
+            <td>José Mauricio</td>
+            <td>Montalvo Arzú</td>
+            <td>04658972-6</td>
+            <td>7988-5542</td>
           </tr>
           <tr>
-            <td>3</td><td>Carlos Amílcar</td><td>Gómez Padilla</td><td>68975248-7</td><td>6879-6985</td>
+            <td>3</td>
+            <td>Carlos Amílcar</td>
+            <td>Gómez Padilla</td>
+            <td>68975248-7</td>
+            <td>6879-6985</td>
           </tr>
           <tr>
-            <td>4</td><td>Ana María</td><td>Lagos Pérez</td><td>26589754-0</td><td>7522-3369</td>
+            <td>4</td>
+            <td>Ana María</td>
+            <td>Lagos Pérez</td>
+            <td>26589754-0</td>
+            <td>7522-3369</td>
           </tr>
           <tr>
-            <td>5</td><td>Miriam Noemí</td><td>Bátrez Artiga</td><td>56985678-9</td><td>2365-4568</td>
+            <td>5</td>
+            <td>Miriam Noemí</td>
+            <td>Bátrez Artiga</td>
+            <td>56985678-9</td>
+            <td>2365-4568</td>
           </tr>
         </tbody>
       </table>
     </div>
 
     <!-- Botón -->
-    <button class="btn btn-next" onclick="location.href='./10-learnmore.html'">Siguiente <span class="arrow">→</span></button>
+    <button class="btn btn-next" onclick="location.href='./10-learnmore.html'">Siguiente <span
+        class="arrow">→</span></button>
 
   </main>
 
@@ -78,6 +102,7 @@
     </div>
   </footer>
 
-  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/bootstrap.bundle.js"></script>
 </body>
+
 </html>

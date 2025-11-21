@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantalla 6 - Previsualización</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/preview.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="bg-white">
 
   <!-- Marca -->
   <header class="d-flex justify-content-end p-3">
@@ -18,11 +21,11 @@
 
     <!-- Burbujas y robot -->
     <div class="top-section">
-      <div class="robot-space d-flex align-items-center justify-content-center">
+      <div class="robot-space robot-small d-flex align-items-center justify-content-center">
         <span>Espacio para robot</span>
       </div>
       <div class="chat-container">
-        <div class="chat-bubble">
+        <div class="chat-bubble chat-compact">
           Este es el tipo de documento elegido.<br>
           Puedes revisarlo escaneando el QR.
         </div>
@@ -35,19 +38,21 @@
     </div>
 
     <!-- Texto guía -->
-    <p class="instruction">
+    <p class="instruction instruction-normal">
       Presiona <span class="highlight">Extraer</span> para continuar
     </p>
 
     <!-- Documento previsualizado -->
     <div class="doc-preview">
-      <iframe src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf" style="width:100%; height:200px;" frameborder="0"></iframe>
+      <iframe
+        src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
+        style="width:100%; height:200px;" frameborder="0"></iframe>
     </div>
 
     <!-- Botones -->
     <div class="buttons-group">
       <button class="btn btn-extract" onclick="location.href='./08-extraccion.html'">Extraer</button>
-      <button class="btn btn-back"    onclick="location.href='./06-process.html'">⟲ Regresar</button>
+      <button class="btn btn-back" onclick="location.href='./06-process.html'">⟲ Regresar</button>
     </div>
   </main>
 
@@ -58,13 +63,13 @@
     </div>
   </footer>
 
-  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/bootstrap.bundle.js"></script>
 
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
-    if(docId){
-        document.addEventListener("DOMContentLoaded", () => {
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
         fetch('http://localhost:3000/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
@@ -77,4 +82,5 @@
     }
   </script>
 </body>
+
 </html>

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantalla 6 - Proceso IA</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/process.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="bg-white">
 
   <!-- Marca -->
   <header class="d-flex justify-content-end p-3">
@@ -19,7 +22,7 @@
     <!-- Burbuja -->
     <div class="chat-container">
       <div class="chat-bubble">
-        Kodigo, como líder en procesos formativos sobre inteligencia artificial, 
+        Kodigo, como líder en procesos formativos sobre inteligencia artificial,
         ha programado un proceso automatizado de extracción de datos.
       </div>
     </div>
@@ -41,7 +44,7 @@
     <!-- Botones -->
     <div class="buttons-group">
       <button class="btn btn-start" onclick="location.href='./07-preview.html'">Comenzar</button>
-      <button class="btn btn-back"  onclick="location.href='./05-documents.html'">⟲ Regresar</button>
+      <button class="btn btn-back" onclick="location.href='./05-documents.html'">⟲ Regresar</button>
     </div>
   </main>
 
@@ -52,12 +55,12 @@
     </div>
   </footer>
 
-  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../scripts/bootstrap.bundle.js"></script>
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
-    if(docId){
-        document.addEventListener("DOMContentLoaded", () => {
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
         fetch('http://localhost:3000/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
@@ -69,7 +72,8 @@
           });
       });
     }
-    
+
   </script>
 </body>
+
 </html>

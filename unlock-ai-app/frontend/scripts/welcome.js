@@ -1,23 +1,33 @@
 // Bootstrap Carousel (sin autoplay, con tacto y teclado)
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector("#coursesCarousel");
+  if (!carousel) return; // Si no existe el carousel, salir
+  
+  const items = carousel.querySelectorAll(".carousel-item");
   const indicators = carousel.querySelectorAll(".carousel-indicators button");
+  
+  if (items.length === 0) return; // Si no hay items, salir
+  
   let currentIndex = 0;
 
   setInterval(() => {
     // quitar clase active de item actual
-    const items = carousel.querySelectorAll(".carousel-item");
     items[currentIndex].classList.remove("active");
-    indicators[currentIndex].classList.remove("active");
+    if (indicators.length > 0) {
+      indicators[currentIndex].classList.remove("active");
+    }
 
     // calcular siguiente índice
     currentIndex = (currentIndex + 1) % items.length;
 
     // activar nuevo item e indicator
     items[currentIndex].classList.add("active");
-    indicators[currentIndex].classList.add("active");
+    if (indicators.length > 0) {
+      indicators[currentIndex].classList.add("active");
+    }
   }, 5000); // cambia cada 5s
 });
+
 
 
 /* ===== Slide to unlock (lleva a pantalla 3) ===== */
