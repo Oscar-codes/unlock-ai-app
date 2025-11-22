@@ -1,6 +1,7 @@
 /* ===================================================================
    FINAL PAGE - Estilos específicos
    Nota: Estilos comunes están en shared.css
+   El fondo degradado se define en shared.css con .bg-gradient
    =================================================================== */
 
 /* Texto principal */
@@ -8,27 +9,34 @@
   font-size: clamp(1rem, 2vh, 1.4rem);
   line-height: 1.6;
   max-width: 800px;
+  color: #fff;
 }
 
 /* Información de cursos */
 .courses-info {
   max-width: 800px;
   margin-top: 2vh;
+  padding: 0 2rem;
 }
 
 .courses-info h4 {
   font-weight: 700;
   font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
 }
 
 .courses-info h5 {
   font-weight: 500;
+  font-size: 1rem;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
 .courses-list {
   list-style: none;
   padding: 0;
+  margin: 1rem 0;
 }
 
 .courses-list li {
@@ -37,6 +45,7 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  color: #fff;
 }
 
 .courses-list .badge {
@@ -44,11 +53,147 @@
   border-radius: 50%;
   color: #fff;
   font-weight: 700;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 0.75rem;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* Media queries específicas para final */
-@media (orientation: portrait) {
+/* QR Container */
+.qr-container {
+  margin: 2vh auto;
+}
+
+.qr-container img {
+  width: 200px;
+  height: auto;
+}
+
+/* ===== RESPONSIVE - MOBILE MEDIUM ===== */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .final-main {
+    padding: 2vh 3vw;
+    gap: 2vh;
+  }
+
+  .final-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 1rem;
+  }
+
+  .qr-container img {
+    width: 180px;
+  }
+
+  .courses-info {
+    padding: 0 1rem;
+    margin-top: 1.5vh;
+  }
+
+  .courses-info h4 {
+    font-size: 1.1rem;
+  }
+
+  .courses-info h5 {
+    font-size: 0.95rem;
+  }
+
+  .courses-list li {
+    font-size: 0.95rem;
+    margin: 0.7rem 0;
+  }
+
+  .courses-list .badge {
+    min-width: 36px;
+    height: 36px;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .final-footer {
+    padding: 2vh 0 1.5vh;
+  }
+
+  .final-footer .footer-logo {
+    width: 100px;
+  }
+}
+
+/* ===== RESPONSIVE - MOBILE SMALL ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+  .final-main {
+    padding: 1.5vh 4vw;
+    gap: 1.5vh;
+    justify-content: center;
+  }
+
+  .final-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 0.5rem;
+    max-width: 95%;
+  }
+
+  .qr-container {
+    margin: 1.5vh auto;
+  }
+
+  .qr-container img {
+    width: 160px;
+  }
+
+  .courses-info {
+    padding: 0 0.5rem;
+    margin-top: 1vh;
+    max-width: 95%;
+  }
+
+  .courses-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .courses-info h5 {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .courses-list {
+    margin: 0.8rem 0;
+  }
+
+  .courses-list li {
+    font-size: 0.85rem;
+    margin: 0.6rem 0;
+    gap: 0.6rem;
+  }
+
+  .courses-list .badge {
+    min-width: 32px;
+    height: 32px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .final-footer {
+    padding: 1.5vh 0 1vh;
+  }
+
+  .final-footer .footer-logo {
+    width: 80px;
+  }
+
+  .final-footer .footer-link {
+    font-size: 0.9rem;
+  }
+}
+
+/* Media queries específicas para final - Desktop */
+@media (orientation: portrait) and (min-width: 769px) {
   .qr-container img {
     width: 220px;
   }

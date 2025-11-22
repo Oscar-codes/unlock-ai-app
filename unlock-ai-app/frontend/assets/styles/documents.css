@@ -1,11 +1,16 @@
 /* ===================================================================
-   AREA PAGE - Estilos específicos
+   DOCUMENTS PAGE - Estilos específicos
    Nota: Todos los estilos están en shared.css
    Este archivo se mantiene para futura personalización específica
    =================================================================== */
 
-/* No hay estilos específicos para esta página */
-/* Todos los componentes usan shared.css */
+/* Asegurar que el botón esté centrado y tenga el estilo correcto */
+.area-main .btn-start {
+    display: block;
+    margin: 2vh auto 0;
+    border-radius: 30px;
+}
+
 /* ===== MOBILE OPTIMIZATION - ROBOT + CHAT SIDE BY SIDE ===== */
 
 /* Mobile Medium */
@@ -63,9 +68,10 @@
         justify-self: center;
     }
 
-    .area-main .btn-next {
+    .area-main .btn-start {
         grid-column: 1 / -1;
         justify-self: center;
+        margin: 0;
     }
 }
 
@@ -115,8 +121,9 @@
         justify-self: center;
     }
 
-    .area-main .btn-next {
+    .area-main .btn-start {
         grid-column: 1 / -1;
         justify-self: center;
+        margin: 0;
     }
 }

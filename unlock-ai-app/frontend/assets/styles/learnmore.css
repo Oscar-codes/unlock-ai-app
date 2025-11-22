@@ -3,37 +3,4 @@
    Nota: Estilos comunes están en shared.css
    =================================================================== */
 
-/* Botón "Conocer más" con gradiente azul-morado */
-.btn-more {
-  background: linear-gradient(90deg, #9b4dff, #4f91ff);
-  border: none;
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding: 0.8rem 2.5rem;
-  border-radius: 30px;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.btn-more:hover {
-  background: linear-gradient(90deg, #7a39cc, #3a6fd9);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(155, 77, 255, 0.3);
-}
-
-/* Botón reintentar (alias de btn-back) */
-.btn-retry {
-  background: transparent;
-  border: 2px solid #9b4dff;
-  color: #9b4dff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 0.6rem 2rem;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.btn-retry:hover {
-  background: #f3eaff;
-  transform: translateY(-2px);
-}
+/* No hay estilos específicos - todos los estilos están en shared.css */

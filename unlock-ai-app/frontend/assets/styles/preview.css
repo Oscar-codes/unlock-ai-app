@@ -19,24 +19,6 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón extraer (variante específica de preview) */
-.btn-extract {
-  background: linear-gradient(90deg, #9b4dff, #4f91ff);
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding: 0.8rem 2.5rem;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-}
-
-.btn-extract:hover {
-  background: linear-gradient(90deg, #7a39cc, #3a6fd9);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(155, 77, 255, 0.3);
-}
-
 /* ===== MOBILE OPTIMIZATION FOR PREVIEW PAGE ===== */
 
 /* Mobile Medium */
@@ -110,7 +92,7 @@
     max-width: 300px;
   }
 
-  .preview-main .btn-extract {
+  .preview-main .btn-start {
     font-size: 1rem;
     padding: 0.7rem 2rem;
     width: 100%;
@@ -194,7 +176,7 @@
     max-width: 280px;
   }
 
-  .preview-main .btn-extract {
+  .preview-main .btn-start {
     font-size: 0.95rem;
     padding: 0.65rem 1.8rem;
     width: 100%;

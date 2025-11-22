@@ -357,6 +357,11 @@ header.welcome-header .site-brand {
     gap: 1vh;
 }
 
+.final-footer .footer-logo {
+    width: 120px;
+    height: auto;
+}
+
 .footer-link {
     font-size: 1rem;
     color: #fff;
@@ -554,6 +559,7 @@ header.welcome-header .site-brand {
 
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
+
     .btn-next,
     .btn-test {
         font-size: 1.6rem;
