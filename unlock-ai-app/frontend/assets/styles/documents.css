@@ -54,14 +54,18 @@
     /* Instruction y grid siguen en su posición normal */
     .area-main .instruction {
         grid-column: 1 / -1;
+        justify-self: center;
     }
 
     .area-main .areas-grid {
         grid-column: 1 / -1;
+        margin: 0 auto;
+        justify-self: center;
     }
 
     .area-main .btn-next {
         grid-column: 1 / -1;
+        justify-self: center;
     }
 }
 
@@ -102,13 +106,17 @@
     /* Instruction y grid siguen en su posición normal */
     .area-main .instruction {
         grid-column: 1 / -1;
+        justify-self: center;
     }
 
     .area-main .areas-grid {
         grid-column: 1 / -1;
+        margin: 0 auto;
+        justify-self: center;
     }
 
     .area-main .btn-next {
         grid-column: 1 / -1;
+        justify-self: center;
     }
 }

@@ -445,7 +445,7 @@ header.welcome-header .site-brand {
 /* Ajuste para totem (portrait 1080x1920) */
 @media (orientation: portrait) {
     .areas-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .btn-next,
@@ -554,6 +554,12 @@ header.welcome-header .site-brand {
 
 /* Tablet */
 @media (min-width: 769px) and (max-width: 1024px) {
+    .btn-next,
+    .btn-test {
+        font-size: 1.6rem;
+        padding: 0.8rem 1rem;
+    }
+
     .agent-footer {
         height: 600px;
     }
@@ -637,21 +643,21 @@ header.welcome-header .site-brand {
     }
 
     .area-item {
-        min-height: 140px;
-        padding: 1rem;
+        min-height: 100px;
+        padding: 0.6rem;
     }
 
     .area-item img {
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
     }
 
     .area-item span {
-        font-size: 0.9rem;
+        font-size: 0.75rem;
     }
 
     .area-item.selected {
-        padding: 1rem;
+        padding: 0.7rem;
     }
 }
 
@@ -665,21 +671,21 @@ header.welcome-header .site-brand {
     }
 
     .area-item {
-        min-height: 120px;
-        padding: 0.8rem;
+        min-height: 90px;
+        padding: 0.5rem;
     }
 
     .area-item img {
-        width: 50px;
-        height: 50px;
+        width: 38px;
+        height: 38px;
     }
 
     .area-item span {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     .area-item.selected {
-        padding: 0.8rem;
+        padding: 0.6rem;
         transform: scale(1.02);
     }
 

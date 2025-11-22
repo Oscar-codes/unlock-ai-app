@@ -5,3 +5,134 @@
 
 /* No hay estilos únicos adicionales para esta página */
 /* Usa .instruction.instruction-normal y .highlight de shared.css */
+
+/* ===== MOBILE OPTIMIZATION FOR PROCESS PAGE ===== */
+
+/* Mobile Medium */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+   .process-main {
+      padding: 1.5vh 4vw;
+      gap: 2vh;
+   }
+
+   .process-main .chat-container {
+      margin-bottom: 1vh;
+   }
+
+   .process-main .chat-bubble {
+      font-size: 0.85rem;
+      padding: 1rem 1.2rem;
+      line-height: 1.5;
+   }
+
+   .process-main .robot-space {
+      width: 45vw;
+      height: 45vw;
+      max-width: 200px;
+      max-height: 200px;
+      margin: 1vh 0;
+   }
+
+   .process-main .instruction {
+      font-size: 1rem;
+      margin: 1.5vh 0;
+   }
+
+   .process-main .doc-selected {
+      margin: 2vh 0;
+   }
+
+   .process-main .doc-selected img {
+      width: 60px;
+      height: 60px;
+   }
+
+   .process-main .doc-selected span {
+      font-size: 0.9rem;
+      margin-top: 0.5vh;
+   }
+
+   .process-main .buttons-group {
+      gap: 1.2vh;
+      margin-top: 2vh;
+      width: 100%;
+      max-width: 300px;
+   }
+
+   .process-main .btn-start {
+      font-size: 1rem;
+      padding: 0.7rem 2rem;
+      width: 100%;
+   }
+
+   .process-main .btn-back {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.8rem;
+      width: 100%;
+   }
+}
+
+/* Mobile Small */
+@media (max-width: 480px) and (orientation: portrait) {
+   .process-main {
+      padding: 1vh 3vw;
+      gap: 1.5vh;
+   }
+
+   .process-main .chat-container {
+      margin-bottom: 0.5vh;
+      width: 95%;
+   }
+
+   .process-main .chat-bubble {
+      font-size: 0.8rem;
+      padding: 0.9rem 1rem;
+      line-height: 1.4;
+   }
+
+   .process-main .robot-space {
+      width: 50vw;
+      height: 50vw;
+      max-width: 180px;
+      max-height: 180px;
+      margin: 1vh 0;
+   }
+
+   .process-main .instruction {
+      font-size: 0.95rem;
+      margin: 1vh 0;
+   }
+
+   .process-main .doc-selected {
+      margin: 1.5vh 0;
+   }
+
+   .process-main .doc-selected img {
+      width: 55px;
+      height: 55px;
+   }
+
+   .process-main .doc-selected span {
+      font-size: 0.85rem;
+      margin-top: 0.5vh;
+   }
+
+   .process-main .buttons-group {
+      gap: 1vh;
+      margin-top: 1.5vh;
+      width: 100%;
+      max-width: 280px;
+   }
+
+   .process-main .btn-start {
+      font-size: 0.95rem;
+      padding: 0.65rem 1.8rem;
+      width: 100%;
+   }
+
+   .process-main .btn-back {
+      font-size: 0.85rem;
+      padding: 0.55rem 1.6rem;
+      width: 100%;
+   }
+}
