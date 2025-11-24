@@ -127,3 +127,60 @@
         margin: 0;
     }
 }
+
+/* ===== RESPONSIVE - NEST HUB MAX (1280x800) ===== */
+@media (min-width: 1200px) and (max-width: 1300px) and (min-height: 750px) and (max-height: 850px) and (orientation: landscape) {
+    .area-main {
+        padding: 3vh 4vw;
+        gap: 2vh;
+    }
+
+    .robot-space {
+        width: 200px;
+        height: 200px;
+        margin: 2vh auto;
+    }
+
+    .chat-container {
+        max-width: 550px;
+    }
+
+    .chat-bubble {
+        font-size: 1rem;
+        padding: 1.2rem 1.5rem;
+        line-height: 1.5;
+    }
+
+    .instruction {
+        font-size: 1.1rem;
+        margin: 1.5vh 0;
+    }
+
+    .areas-grid {
+        gap: 2.5vh 3vw;
+        max-width: 700px;
+    }
+
+    .area-item img {
+        width: 55px;
+        height: 55px;
+    }
+
+    .area-item span {
+        font-size: 0.95rem;
+    }
+
+    .btn-start {
+        font-size: 1.2rem;
+        padding: 0.7rem 2rem;
+        margin: 2vh auto 0;
+    }
+
+    header {
+        padding: 1.5vh 3vw !important;
+    }
+
+    .site-brand {
+        font-size: 1.1rem;
+    }
+}

@@ -451,3 +451,107 @@ footer {
     font-size: 0.85rem;
   }
 }
+
+/* ===== RESPONSIVE - NEST HUB MAX (1280x800) ===== */
+@media (min-width: 1200px) and (max-width: 1300px) and (min-height: 750px) and (max-height: 850px) and (orientation: landscape) {
+  main {
+    padding: 4vh 0 2vh 0;
+    gap: 1vh;
+    justify-content: space-around;
+  }
+
+  .main-icon {
+    width: 25vh;
+    max-width: 250px;
+    margin-bottom: 1vh;
+  }
+
+  #coursesCarousel {
+    width: min(70vw, 700px);
+    margin: 1vh auto;
+  }
+
+  .course-card {
+    width: 400px;
+    max-width: 70vw;
+    margin: 1rem auto;
+    border-radius: 20px;
+  }
+
+  .course-card-header {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .course-card-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .course-card-body {
+    padding: 2rem 1.5rem;
+  }
+
+  .course-card-body p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .carousel-item {
+    padding: 1vh 0;
+  }
+
+  .carousel-item.active .course-card {
+    transform: scale(1.05);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .carousel-item:not(.active) .course-card {
+    transform: scale(0.95);
+    opacity: 0.6;
+  }
+
+  .carousel-indicators {
+    margin-bottom: -0.5rem;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+  }
+
+  .slide-btn-container {
+    width: 350px;
+    max-width: 70vw;
+    margin: 1vh auto 0;
+  }
+
+  .slide-btn {
+    height: 65px;
+  }
+
+  .slide-handle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+
+  .slide-text {
+    font-size: 1.1rem;
+  }
+
+  footer {
+    padding: 3vh 0;
+  }
+
+  .footer-logo {
+    width: 150px;
+  }
+
+  .welcome-header {
+    padding: 1.5vh 3vw !important;
+  }
+
+  .site-brand {
+    font-size: 1.3rem;
+  }
+}

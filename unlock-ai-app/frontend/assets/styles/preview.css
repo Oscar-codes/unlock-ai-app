@@ -188,3 +188,65 @@
     width: 100%;
   }
 }
+
+/* ===== TABLET PORTRAIT - iPad Air (820x1180) ===== */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+  .preview-main {
+    padding: 1.5vh 4vw;
+    gap: 1.2vh;
+  }
+
+  .preview-main .top-section {
+    gap: 1.2vh;
+    margin-bottom: 1vh;
+  }
+
+  .preview-main .robot-space {
+    width: 200px;
+    height: 200px;
+  }
+
+  .preview-main .chat-bubble {
+    font-size: 1rem;
+    padding: 1.2rem 1.5rem;
+    line-height: 1.5;
+  }
+
+  .preview-main .qr-container img {
+    width: 160px;
+    margin: 1.2vh 0;
+  }
+
+  .preview-main .instruction {
+    font-size: 1rem;
+    margin: 1vh 0;
+  }
+
+  .preview-main .doc-preview {
+    margin: 1.2vh 0;
+  }
+
+  .preview-main .doc-preview iframe,
+  .preview-main .doc-preview img {
+    width: 55vw;
+    max-width: 320px;
+    height: auto;
+    min-height: 200px;
+  }
+
+  .preview-main .buttons-group {
+    gap: 1.2vh;
+    margin-top: 1.2vh;
+    max-width: 350px;
+  }
+
+  .preview-main .btn-start {
+    font-size: 1.1rem;
+    padding: 0.7rem 2rem;
+  }
+
+  .preview-main .btn-back {
+    font-size: 1rem;
+    padding: 0.6rem 1.8rem;
+  }
+}
