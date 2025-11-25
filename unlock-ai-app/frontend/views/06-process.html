@@ -14,7 +14,7 @@
 
   <!-- Marca -->
   <header class="d-flex justify-content-end p-3">
-    <span class="site-brand">Ai.kodigo.org</span>
+    <span class="site-brand " href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
   </header>
 
   <main class="process-main text-center">
@@ -27,15 +27,15 @@
       </div>
     </div>
 
-    <!-- Espacio para robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
-      <span>Espacio para robot</span>
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
     </div>
 
     <!-- Texto guía -->
     <p class="instruction instruction-normal">Presiona sobre el botón <span class="highlight">Comenzar</span></p>
 
-    <!-- Icono de documento seleccionado -->
+    <!-- Documento seleccionado -->
     <div class="doc-selected">
       <img src="../assets/icons/curriculos.png" alt="Currículos">
       <span>CURRÍCULOS</span>
@@ -48,10 +48,17 @@
     </div>
   </main>
 
+
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+        <a href="./02-welcome.html">
+            <img 
+                src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png" 
+                alt="Unlock AI by Kodigo" 
+                class="footer-logo"
+            >
+        </a>
     </div>
   </footer>
 
@@ -59,9 +66,9 @@
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
-    if (docId) {
-      document.addEventListener("DOMContentLoaded", () => {
-        fetch('http://localhost:3000/documento-seleccionado')
+    if(docId){
+        document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
             if (data.success && data.doc) {

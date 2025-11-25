@@ -12,9 +12,9 @@
 }
 
 /* Documento previsualizado */
-.doc-preview img {
-  width: min(60vw, 360px);
-  border-radius: 10px;
+.doc-preview {
+  width: 50%;
+  max-width: 600px;
   margin: 2vh 0;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }

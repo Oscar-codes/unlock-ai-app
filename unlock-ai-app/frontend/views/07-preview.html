@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pantalla 6 - Previsualización</title>
+  <title>Pantalla 7 - Previsualización</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/preview.css" rel="stylesheet">
@@ -12,9 +12,56 @@
 
 <body class="bg-white">
 
-  <!-- Marca -->
+<style>
+    /* Contenedor conjunto robot + burbuja */
+    .robot-chat-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem; /* espacio entre robot y burbuja */
+      flex-wrap: wrap; /* permite adaptarse en pantallas pequeñas */
+      
+    }
+
+    /* Robot */
+    .robot-space {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .robot-space img.robot-img {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Chat bubble */
+    .chat-container {
+      flex: 1 1 300px;
+      max-width: 700px;
+      display: flex;
+      justify-content: center;
+    }
+    .chat-bubble {
+      background: #EDE0FF;
+      padding: 1rem 2rem;
+      border-radius: 20px;
+      font-size: clamp(1rem, 2vh, 1.4rem);
+      line-height: 1.6;
+      text-align: center;
+      animation: floatChat 4s ease-in-out infinite;
+    }
+
+    @keyframes floatChat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+  </style>
+  <!-- Marca en la esquina superior derecha -->
   <header class="d-flex justify-content-end p-3">
-    <span class="site-brand">Ai.kodigo.org</span>
+    <a class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">AI.kodigo.org</a>
   </header>
 
   <main class="preview-main text-center">
@@ -22,7 +69,7 @@
     <!-- Burbujas y robot -->
     <div class="top-section">
       <div class="robot-space robot-small d-flex align-items-center justify-content-center">
-        <span>Espacio para robot</span>
+        <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
       </div>
       <div class="chat-container">
         <div class="chat-bubble chat-compact">
@@ -31,10 +78,10 @@
         </div>
       </div>
     </div>
-
     <!-- QR -->
     <div class="qr-container">
-      <img src="../assets/images/sample-qr.png" alt="Código QR">
+      <img src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759177070/samples/unlockIA/QR/curriculos_qzcpwv.png"
+        alt="Código QR">
     </div>
 
     <!-- Texto guía -->
@@ -56,10 +103,17 @@
     </div>
   </main>
 
+
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+        <a href="./02-welcome.html">
+            <img 
+                src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png" 
+                alt="Unlock AI by Kodigo" 
+                class="footer-logo"
+            >
+        </a>
     </div>
   </footer>
 
@@ -70,11 +124,14 @@
 
     if (docId) {
       document.addEventListener("DOMContentLoaded", () => {
-        fetch('http://localhost:3000/documento-seleccionado')
+        fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
             if (data.success && data.doc) {
               console.log('Documento seleccionado:', data);
+              //agregando el QR dinámicamente
+              document.querySelector('.qr-container img').src = data.doc.qr;
+              //agregando el documento dinámicamente
               document.querySelector('iframe').src = data.doc.url;
             }
           });

@@ -8,20 +8,21 @@
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/styles/shared.css" rel="stylesheet">
   <link href="../assets/styles/area.css" rel="stylesheet">
+   <link href="../assets/styles/footer.css" rel="stylesheet">
 </head>
 
 <body class="bg-white">
 
   <!-- Marca en la esquina superior derecha -->
   <header class="d-flex justify-content-end p-3">
-    <span class="site-brand">Ai.kodigo.org</span>
+    <span class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
   </header>
 
   <main class="area-main text-center">
 
-    <!-- Espacio para robot -->
-    <div class="robot-space d-flex align-items-center justify-content-center">
-      <span>Espacio para robot</span>
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 3 hablando.gif" alt="Robot IA" class="robot-img">
     </div>
 
     <!-- Mensaje tipo burbuja -->
@@ -71,13 +72,17 @@
 
   <!-- Footer -->
   <footer class="text-center footer agent-footer">
-    <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI" class="footer-logo">
+    <a href="./02-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" 
+             alt="Unlock AI by Kodigo" 
+             class="footer-logo"
+        >
+      </a>
   </footer>
 
   <script src="../scripts/bootstrap.bundle.js"></script>
 
-  <!-- codigo de peticion de agregar el contador por area -->
-  <script>
+    <script>
     document.querySelectorAll('.area-item').forEach(item => {
       item.addEventListener('click', () => {
         // Remover la clase 'selected' de todos los elementos
@@ -89,7 +94,7 @@
         const areaName = item.querySelector('span').textContent;
         const areaId = areaName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-        fetch('http://localhost:3000/registrar-area', {
+        fetch('https://unlock-ai-app-7cvq.onrender.com/registrar-area', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -107,6 +112,7 @@
       });
     });
   </script>
+  
 </body>
 
 </html>

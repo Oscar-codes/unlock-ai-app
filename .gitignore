@@ -2,8 +2,6 @@
 /node_modules
 /unlock-ai-app/backend/node_modules/
 
-# Build artifacts
-/unlock-ai-app/backend/dist/
 
 # Logs
 *.log

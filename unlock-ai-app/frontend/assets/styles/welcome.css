@@ -38,7 +38,6 @@ main {
   padding: 2rem 1.5rem;
   text-align: center;
 }
-
 .course-card-header h3 {
   color: #fff;
   font-size: 1.8rem;
@@ -52,7 +51,6 @@ main {
   padding: 2.5rem 2rem;
   text-align: center;
 }
-
 .course-card-body p {
   color: #000;
   font-size: 1.1rem;
@@ -186,7 +184,10 @@ footer {
 }
 
 .footer-logo {
-  width: 180px;
+  display: block;
+  bottom: 600px;
+  margin: 0 auto 2vh auto;
+  width: 120px;
   opacity: 0.8;
 }
 

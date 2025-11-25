@@ -41,7 +41,7 @@
 
 .step.active .progress-bar {
   background: linear-gradient(90deg, #ff7ef8, #9b4dff, #4f91ff);
-  animation: loadStep 3s linear forwards;
+  animation: loadStep 2s linear forwards;
 }
 
 @keyframes loadStep {
