@@ -19,13 +19,12 @@ const path_1 = __importDefault(require("path"));
 const AreaController_1 = require("./controllers/AreaController");
 const DocumentController_1 = require("./controllers/DocumentController");
 const app = (0, express_1.default)();
+const PORT = process.env.PORT || 3000;
 // Middlewares
-app.use((0, cors_1.default)()); // permite peticiones desde cualquier origen
+app.use((0, cors_1.default)({ origin: '*' }));
 app.use(body_parser_1.default.json());
 // Servir archivos estáticos del frontend
-// __dirname se refiere al directorio del script actual (ej: unlock-ai-app/backend/dist)
-// Usamos path.join para construir una ruta relativa a la carpeta 'frontend'
-app.use(express_1.default.static(path_1.default.join(__dirname, '../../frontend')));
+// app.use(express.static(path.join(__dirname, '../../frontend/public')));
 // Endpoint para registrar un área
 app.post("/registrar-area", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -38,7 +37,7 @@ app.post("/registrar-area", (req, res) => __awaiter(void 0, void 0, void 0, func
         res.status(500).json({ success: false, message: "Error al registrar área" });
     }
 }));
-//marcar un documento como seleccionado
+// Marcar un documento como seleccionado
 app.post("/seleccionar-documento", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { docId } = req.body;
@@ -57,14 +56,15 @@ app.get("/documento-seleccionado", (req, res) => __awaiter(void 0, void 0, void 
         res.json({ success: true, doc });
     }
     catch (error) {
-        res.status(500).json({ success: false, error });
+        console.error(error);
+        res.status(500).json({ success: false, message: "Error al obtener documento seleccionado" });
     }
 }));
-// Fallback para que las rutas del frontend funcionen con la navegación del cliente (opcional pero recomendado)
-app.get('*', (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, '../../frontend/views/02-welcome.html')); // O el html principal
-});
+// Fallback para rutas del frontend
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../../frontend/public', '01-splash.html'));
+// });
 // Levantar servidor
-app.listen(3000, () => {
-    console.log("Servidor corriendo en http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
