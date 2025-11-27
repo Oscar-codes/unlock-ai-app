@@ -12,53 +12,6 @@
 
 <body class="bg-white">
 
-<style>
-    /* Contenedor conjunto robot + burbuja */
-    .robot-chat-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem; /* espacio entre robot y burbuja */
-      flex-wrap: wrap; /* permite adaptarse en pantallas pequeñas */
-      
-    }
-
-    /* Robot */
-    .robot-space {
-      flex: 0 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .robot-space img.robot-img {
-      width: 100%;
-      max-width: 260px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* Chat bubble */
-    .chat-container {
-      flex: 1 1 300px;
-      max-width: 700px;
-      display: flex;
-      justify-content: center;
-    }
-    .chat-bubble {
-      background: #EDE0FF;
-      padding: 1rem 2rem;
-      border-radius: 20px;
-      font-size: clamp(1rem, 2vh, 1.4rem);
-      line-height: 1.6;
-      text-align: center;
-      animation: floatChat 4s ease-in-out infinite;
-    }
-
-    @keyframes floatChat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-  </style>
   <!-- Marca en la esquina superior derecha -->
   <header class="d-flex justify-content-end p-3">
     <a class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">AI.kodigo.org</a>
@@ -107,13 +60,11 @@
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-        <a href="./02-welcome.html">
-            <img 
-                src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png" 
-                alt="Unlock AI by Kodigo" 
-                class="footer-logo"
-            >
-        </a>
+      <a href="./02-welcome.html">
+        <img
+          src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png"
+          alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
     </div>
   </footer>
 
