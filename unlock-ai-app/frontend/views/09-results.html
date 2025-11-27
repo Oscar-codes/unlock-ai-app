@@ -66,6 +66,25 @@
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
   <script src="../assets/scripts/results.js"></script>
+  <script>
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              console.log('Documento seleccionado:', data);
+              //agregando el QR dinámicamente
+              document.querySelector('.qr-container img').src = data.doc.qr;
+              //agregando el documento dinámicamente
+              document.querySelector('iframe').src = data.doc.url;
+            }
+          });
+      });
+    }
+  </script>
 </body>
 
 </html>
