@@ -31,13 +31,18 @@ main {
   max-width: 85vw;
   margin: 2rem auto;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 .course-card-header {
   background: linear-gradient(180deg, rgba(18, 35, 249, 1) 0%, rgba(2, 230, 255, 0.92) 100%);
   padding: 2rem 1.5rem;
   text-align: center;
+  flex-shrink: 0;
 }
+
 .course-card-header h3 {
   color: #fff;
   font-size: 1.8rem;
@@ -50,7 +55,13 @@ main {
   background: #ffffff;
   padding: 2.5rem 2rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden;
 }
+
 .course-card-body p {
   color: #000;
   font-size: 1.1rem;
@@ -205,6 +216,7 @@ footer {
 
   .course-card {
     width: min(70vw, 600px);
+    height: 380px;
   }
 
   .course-card-header h3 {
@@ -245,6 +257,7 @@ footer {
   .course-card {
     width: 450px;
     max-width: 85vw;
+    height: 260px;
   }
 
   .slide-btn-container {
@@ -271,6 +284,7 @@ footer {
     max-width: 400px;
     border-radius: 20px;
     margin: 0.5rem auto;
+    height: 240px;
   }
 
   .course-card-header {
@@ -365,6 +379,7 @@ footer {
     max-width: 340px;
     border-radius: 18px;
     margin: 0.3rem auto;
+    height: 220px;
   }
 
   .course-card-header {
@@ -477,6 +492,7 @@ footer {
     max-width: 70vw;
     margin: 1rem auto;
     border-radius: 20px;
+    height: 250px;
   }
 
   .course-card-header {
