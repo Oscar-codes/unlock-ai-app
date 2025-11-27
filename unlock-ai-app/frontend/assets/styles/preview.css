@@ -361,7 +361,7 @@ header {
 
   .preview-main .qr-container img {
     width: 160px;
-    margin: 1vh 0;
+    margin: -4vh 0;
   }
 
   .preview-main .instruction {
@@ -483,8 +483,8 @@ header {
 /* ===== TOTEM PORTRAIT (1080x1920) ===== */
 @media (min-width: 1025px) and (max-width: 1100px) and (orientation: portrait) {
   .preview-main {
-    padding: 3vh 8vw;
-    gap: 2.5vh;
+    padding: 2vh 6vw;
+    gap: 1vh;
     max-width: 100%;
   }
 
@@ -494,24 +494,24 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 3vw;
-    margin-bottom: -6vh;
-    width: 100%;
-    max-width: 900px;
+    gap: 2vw;
+    margin-bottom: 0vh;
+    width: 75%;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .preview-main .robot-space {
     flex: 0 0 auto;
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     margin: 0;
   }
 
   .preview-main .robot-space img,
   .preview-main .robot-space img.robot-img {
-    max-width: 200px;
+    max-width: 280px;
   }
 
   .preview-main .chat-container {
@@ -521,50 +521,50 @@ header {
   }
 
   .preview-main .chat-bubble {
-    font-size: 1.1rem;
-    padding: 1.3rem 1.8rem;
-    line-height: 1.5;
+    font-size: 1.3rem;
+    padding: 1.5rem 2rem;
+    line-height: 1.6;
     text-align: center;
   }
 
   .preview-main .qr-container {
-    margin: 2.5vh 0;
+    margin: 1vh 0;
   }
 
   .preview-main .qr-container img {
-    width: 280px;
+    width: 340px;
   }
 
   .preview-main .instruction {
-    font-size: 1.2rem;
-    margin: 2vh 0;
+    font-size: 1.4rem;
+    margin: 1vh 0;
   }
 
   .preview-main .doc-preview {
-    width: 45%;
-    max-width: 450px;
-    margin: 2vh auto;
+    width: 50%;
+    max-width: 520px;
+    margin: 1vh auto;
   }
 
   .preview-main .doc-preview iframe,
   .preview-main .doc-preview img {
-    height: 320px;
+    height: 380px;
   }
 
   .preview-main .buttons-group {
-    gap: 2vh;
-    margin-top: 2.5vh;
-    max-width: 450px;
+    gap: 1.5vh;
+    margin-top: 1.5vh;
+    max-width: 500px;
   }
 
   .preview-main .btn-start {
-    font-size: 1.2rem;
-    padding: 0.85rem 2.8rem;
+    font-size: 1.4rem;
+    padding: 1rem 3.5rem;
   }
 
   .preview-main .btn-back {
-    font-size: 1.1rem;
-    padding: 0.7rem 2.3rem;
+    font-size: 1.3rem;
+    padding: 0.85rem 3rem;
   }
 
   .agent-footer {
@@ -672,9 +672,9 @@ header {
 /* ===== DESKTOP LANDSCAPE (1920x1080) ===== */
 @media (min-width: 1800px) and (orientation: landscape) {
   .preview-main {
-    padding: 3vh 8vw;
-    gap: 2.5vh;
-    max-width: 1400px;
+    padding: 2vh 6vw;
+    gap: 1.2vh;
+    max-width: 1500px;
     margin: 0 auto;
   }
 
@@ -684,24 +684,24 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
-    margin-bottom: 2.5vh;
+    gap: 3vw;
+    margin-bottom: 0.5vh;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .preview-main .robot-space {
     flex: 0 0 auto;
-    width: 280px;
-    height: 280px;
+    width: 350px;
+    height: 350px;
     margin: 0;
   }
 
   .preview-main .robot-space img,
   .preview-main .robot-space img.robot-img {
-    max-width: 280px;
+    max-width: 350px;
   }
 
   .preview-main .chat-container {
@@ -711,46 +711,46 @@ header {
   }
 
   .preview-main .chat-bubble {
-    font-size: 1.3rem;
-    padding: 1.8rem 2.5rem;
+    font-size: 1.5rem;
+    padding: 2rem 3rem;
     line-height: 1.6;
   }
 
   .preview-main .qr-container img {
-    width: 320px;
-    margin: 2.5vh 0;
+    width: 380px;
+    margin: 1.2vh 0;
   }
 
   .preview-main .instruction {
-    font-size: 1.4rem;
-    margin: 2vh 0;
+    font-size: 1.6rem;
+    margin: 1.2vh 0;
   }
 
   .preview-main .doc-preview {
-    width: 40%;
-    max-width: 500px;
-    margin: 2.5vh auto;
+    width: 45%;
+    max-width: 600px;
+    margin: 1.2vh auto;
   }
 
   .preview-main .doc-preview iframe,
   .preview-main .doc-preview img {
-    height: 380px;
+    height: 450px;
   }
 
   .preview-main .buttons-group {
-    gap: 2.5vh;
-    margin-top: 2.5vh;
-    max-width: 500px;
+    gap: 1.8vh;
+    margin-top: 1.5vh;
+    max-width: 550px;
   }
 
   .preview-main .btn-start {
-    font-size: 1.4rem;
-    padding: 1rem 3.5rem;
+    font-size: 1.6rem;
+    padding: 1.1rem 4rem;
   }
 
   .preview-main .btn-back {
-    font-size: 1.3rem;
-    padding: 0.85rem 3rem;
+    font-size: 1.5rem;
+    padding: 0.95rem 3.5rem;
   }
 
   .agent-footer {
