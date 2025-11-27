@@ -68,7 +68,7 @@
 
     if(docId){
         document.addEventListener("DOMContentLoaded", () => {
-        fetch('https://unlock-ai-app-7cvq.onrender.com/documento-seleccionado')
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {
             if (data.success && data.doc) {

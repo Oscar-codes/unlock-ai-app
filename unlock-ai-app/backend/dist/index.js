@@ -15,16 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
-const path_1 = __importDefault(require("path"));
+const dotenv_1 = __importDefault(require("dotenv"));
 const AreaController_1 = require("./controllers/AreaController");
 const DocumentController_1 = require("./controllers/DocumentController");
+dotenv_1.default.config();
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 // Middlewares
 app.use((0, cors_1.default)({ origin: '*' }));
 app.use(body_parser_1.default.json());
-// Servir archivos estáticos del frontend
-// app.use(express.static(path.join(__dirname, '../../frontend/public')));
+// Health check endpoint (útil para Render)
+app.get("/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
 // Endpoint para registrar un área
 app.post("/registrar-area", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -66,5 +69,6 @@ app.get("/documento-seleccionado", (req, res) => __awaiter(void 0, void 0, void 
 // });
 // Levantar servidor
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+    console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
 });

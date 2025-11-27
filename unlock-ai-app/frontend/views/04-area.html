@@ -94,7 +94,7 @@
         const areaName = item.querySelector('span').textContent;
         const areaId = areaName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-        fetch('https://unlock-ai-app-7cvq.onrender.com/registrar-area', {
+        fetch('https://unlock-ai-app-backend.onrender.com/registrar-area', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
