@@ -13,39 +13,88 @@
 }
 
 /* Información de cursos */
-.courses-info {
-  max-width: 800px;
+.courses-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   margin-top: 2vh;
+}
+
+.courses-info {
+  max-width: 400px;
   padding: 0 2rem;
 }
 
 .courses-info h4 {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .courses-info h5 {
-  font-weight: 500;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Wrapper para bracket y lista */
+.courses-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Bracket decorativo */
+.bracket-decoration {
+  width: 3px;
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bracket-decoration::before,
+.bracket-decoration::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.bracket-decoration::before {
+  top: 0;
+}
+
+.bracket-decoration::after {
+  bottom: 0;
 }
 
 .courses-list {
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: 0;
+  flex: 1;
 }
 
 .courses-list li {
-  margin: 0.8rem 0;
-  font-size: 1rem;
+  margin: 0.9rem 0;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   color: #fff;
+  font-weight: 500;
 }
 
 .courses-list .badge {
@@ -54,12 +103,13 @@
   color: #fff;
   font-weight: 700;
   padding: 0.5rem 0.75rem;
-  min-width: 40px;
-  height: 40px;
+  min-width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  font-size: 0.9rem;
 }
 
 /* QR Container */
@@ -68,8 +118,38 @@
 }
 
 .qr-container img {
-  width: 200px;
+  width: 180px;
   height: auto;
+}
+
+/* Footer */
+.final-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5vh 0;
+  background: transparent;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo {
+  width: 120px;
+  height: auto;
+}
+
+.footer-link {
+  color: #fff;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 /* ===== RESPONSIVE - MOBILE MEDIUM ===== */
@@ -86,40 +166,39 @@
   }
 
   .qr-container img {
-    width: 180px;
+    width: 170px;
   }
 
   .courses-info {
     padding: 0 1rem;
-    margin-top: 1.5vh;
+    max-width: 380px;
   }
 
   .courses-info h4 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .courses-info h5 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .courses-list li {
-    font-size: 0.95rem;
-    margin: 0.7rem 0;
+    font-size: 0.9rem;
+    margin: 0.8rem 0;
   }
 
   .courses-list .badge {
     min-width: 36px;
     height: 36px;
-    padding: 0.4rem 0.65rem;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
-  .final-footer {
-    padding: 2vh 0 1.5vh;
+  .footer-logo {
+    width: 110px;
   }
 
-  .final-footer .footer-logo {
-    width: 100px;
+  .footer-link {
+    font-size: 0.85rem;
   }
 }
 
@@ -129,6 +208,7 @@
     padding: 1.5vh 4vw;
     gap: 1.5vh;
     justify-content: center;
+    padding-bottom: 15vh;
   }
 
   .final-text {
@@ -143,52 +223,60 @@
   }
 
   .qr-container img {
-    width: 160px;
+    width: 150px;
+  }
+
+  .courses-section {
+    margin-top: 1.5vh;
   }
 
   .courses-info {
     padding: 0 0.5rem;
-    margin-top: 1vh;
     max-width: 95%;
   }
 
   .courses-info h4 {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
   }
 
   .courses-info h5 {
-    font-size: 0.85rem;
-    margin-bottom: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
   }
 
-  .courses-list {
-    margin: 0.8rem 0;
+  .courses-wrapper {
+    gap: 0.8rem;
+  }
+
+  .bracket-decoration {
+    width: 2.5px;
+  }
+
+  .bracket-decoration::before,
+  .bracket-decoration::after {
+    width: 12px;
+    height: 2.5px;
   }
 
   .courses-list li {
-    font-size: 0.85rem;
-    margin: 0.6rem 0;
+    font-size: 0.8rem;
+    margin: 0.75rem 0;
     gap: 0.6rem;
   }
 
   .courses-list .badge {
     min-width: 32px;
     height: 32px;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
-  .final-footer {
-    padding: 1.5vh 0 1vh;
+  .footer-logo {
+    width: 100px;
   }
 
-  .final-footer .footer-logo {
-    width: 80px;
-  }
-
-  .final-footer .footer-link {
-    font-size: 0.9rem;
+  .footer-link {
+    font-size: 0.8rem;
   }
 }
 
