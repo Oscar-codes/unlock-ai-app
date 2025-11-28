@@ -21,8 +21,8 @@
 
 /* ===== Ajustes para totem (1080x1920) ===== */
  @media (orientation: portrait) {
-  .chat-bubble { font-size: 1.5rem; }
-  .btn-more, .btn-retry { font-size: 1.4rem; }
+  .chat-bubble { font-size: 1.0rem; }
+  .btn-more, .btn-retry { font-size: 1.0rem; }
 } 
 
 /* ===== Ajustes para monitor (1920x1080) ===== */
