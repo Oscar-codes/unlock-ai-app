@@ -43,8 +43,8 @@
 
     <!-- Botones -->
     <div class="buttons-group">
-      <button class="btn btn-start" onclick="location.href='./07-preview.html'">Comenzar</button>
-      <button class="btn btn-back" onclick="location.href='./05-documents.html'">⟲ Regresar</button>
+      <button class="btn btn-start" onclick="location.href='./06-preview.html'">Comenzar</button>
+      <button class="btn btn-back" onclick="location.href='./04-documents.html'">⟲ Regresar</button>
     </div>
   </main>
 
@@ -52,13 +52,9 @@
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-        <a href="./02-welcome.html">
-            <img 
-                src="../assets/images/unlock-icon-black.png" 
-                alt="Unlock AI by Kodigo" 
-                class="footer-logo"
-            >
-        </a>
+      <a href="./01-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
     </div>
   </footer>
 
@@ -66,8 +62,8 @@
   <script>
     const docId = sessionStorage.getItem('selectedDocId');
 
-    if(docId){
-        document.addEventListener("DOMContentLoaded", () => {
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
         fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
           .then(res => res.json())
           .then(data => {

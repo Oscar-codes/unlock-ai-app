@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (left > threshold) {
       // Éxito → ir a pantalla 3
-      window.location.href = "../views/03-agent.html";
+      window.location.href = "../views/02-agent.html";
     } else {
       handle.style.left = "0px";
     }
