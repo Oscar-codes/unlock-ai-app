@@ -33,7 +33,13 @@
 /* ===== RESPONSIVE - MOBILE ADAPTATIONS ===== */
 
 /* Tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+
+  /* Hide QR on tablet portrait */
+  .qr-container {
+    display: none;
+  }
+
   .table-container {
     width: 95%;
     max-width: 700px;
@@ -67,10 +73,9 @@
     line-height: 1.4;
   }
 
-  .qr-container img {
-    width: 140px;
-    height: auto;
-    margin: 1vh 0;
+  /* Hide QR on mobile */
+  .qr-container {
+    display: none;
   }
 
   .table-container {
@@ -114,10 +119,9 @@
     border-radius: 15px;
   }
 
-  .qr-container img {
-    width: 120px;
-    height: auto;
-    margin: 0.5vh 0;
+  /* Hide QR on mobile */
+  .qr-container {
+    display: none;
   }
 
   .table-container {

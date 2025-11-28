@@ -268,9 +268,9 @@ header {
     line-height: 1.4;
   }
 
-  .preview-main .qr-container img {
-    width: 180px;
-    margin: 1.5vh 0;
+  /* Hide QR on mobile */
+  .preview-main .qr-container {
+    display: none;
   }
 
   .preview-main .instruction {
@@ -279,14 +279,14 @@ header {
   }
 
   .preview-main .doc-preview {
-    width: 70vw;
-    max-width: 280px;
-    margin: 1.5vh 0;
+    width: 85vw;
+    max-width: 400px;
+    margin: 1.5vh auto;
   }
 
   .preview-main .doc-preview iframe,
   .preview-main .doc-preview img {
-    height: 180px;
+    height: 250px;
   }
 
   .preview-main .buttons-group {
@@ -359,9 +359,9 @@ header {
     line-height: 1.3;
   }
 
-  .preview-main .qr-container img {
-    width: 160px;
-    margin: -4vh 0;
+  /* Hide QR on mobile */
+  .preview-main .qr-container {
+    display: none;
   }
 
   .preview-main .instruction {
@@ -370,19 +370,19 @@ header {
   }
 
   .preview-main .doc-preview {
-    width: 75vw;
-    max-width: 260px;
-    margin: 1vh 0;
+    width: 90vw;
+    max-width: 350px;
+    margin: 1.5vh auto;
   }
 
   .preview-main .doc-preview iframe,
   .preview-main .doc-preview img {
-    height: 160px;
+    height: 220px;
   }
 
   .preview-main .buttons-group {
     gap: 1vh;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
     max-width: 280px;
   }
 
@@ -433,9 +433,9 @@ header {
     line-height: 1.5;
   }
 
-  .preview-main .qr-container img {
-    width: 160px;
-    margin: 1.2vh 0;
+  /* Hide QR on tablet portrait */
+  .preview-main .qr-container {
+    display: none;
   }
 
   .preview-main .instruction {
@@ -444,14 +444,14 @@ header {
   }
 
   .preview-main .doc-preview {
-    width: 55vw;
-    max-width: 320px;
-    margin: 1.2vh 0;
+    width: 70vw;
+    max-width: 500px;
+    margin: 1.5vh auto;
   }
 
   .preview-main .doc-preview iframe,
   .preview-main .doc-preview img {
-    height: 200px;
+    height: 300px;
   }
 
   .preview-main .buttons-group {
