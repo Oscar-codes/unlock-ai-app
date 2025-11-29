@@ -1,27 +1,55 @@
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import axios from "axios";
 import pdfParse from "pdf-parse";
 
 // Marcar documento como seleccionado y desmarcar los demás
 export const seleccionarDocumento = async (docId: string) => {
-    const docsSnap = await getDocs(collection(db, "documents"));
-    for (const d of docsSnap.docs) {
-        await updateDoc(doc(db, "documents", d.id), {
-            selected: d.id === docId
+    try {
+        const docsSnapshot = await db.collection("documents").get();
+        
+        // Usar batch para operaciones atómicas (más eficiente)
+        const batch = db.batch();
+        
+        docsSnapshot.docs.forEach(doc => {
+            const docRef = db.collection("documents").doc(doc.id);
+            batch.update(docRef, {
+                selected: doc.id === docId
+            });
         });
+        
+        await batch.commit();
+        console.log(`✅ Documento ${docId} seleccionado`);
+    } catch (error) {
+        console.error("❌ Error seleccionando documento:", error);
+        throw error;
     }
 };
 
 // Obtener documento seleccionado
 export const obtenerDocumentoSeleccionado = async () => {
-    const docsSnap = await getDocs(collection(db, "documents"));
-    const seleccionado = docsSnap.docs.find(d => d.data().selected);
-    return seleccionado ? seleccionado.data() : null;
+    try {
+        const docsSnapshot = await db.collection("documents")
+            .where("selected", "==", true)
+            .limit(1)
+            .get();
+        
+        if (docsSnapshot.empty) {
+            return null;
+        }
+        
+        const doc = docsSnapshot.docs[0];
+        return {
+            id: doc.id,
+            ...doc.data()
+        };
+    } catch (error) {
+        console.error("❌ Error obteniendo documento seleccionado:", error);
+        throw error;
+    }
 };
 
 // Procesar documentos seleccionados
-export const procesarDocumentosSeleccionados = async () => {
+/*export const procesarDocumentosSeleccionados = async () => {
     try {
         // Obtener documentos seleccionados desde Firestore
         const docsSnap = await getDocs(collection(db, "documents"));
@@ -48,4 +76,4 @@ export const procesarDocumentosSeleccionados = async () => {
         console.error("Error al procesar documentos seleccionados:", error);
         return { success: false, error: "No se pudieron procesar los documentos seleccionados." };
     }
-};
+};*/

@@ -1,19 +1,23 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import path from "path";
+import dotenv from "dotenv";
 import { registrarArea } from "./controllers/AreaController";
 import { seleccionarDocumento, obtenerDocumentoSeleccionado } from "./controllers/DocumentController";
 
+dotenv.config();
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Middlewares
 app.use(cors({ origin: '*' }));
 app.use(bodyParser.json());
 
-// Servir archivos estáticos del frontend
-// app.use(express.static(path.join(__dirname, '../../frontend/public')));
+// Health check endpoint (útil para Render)
+app.get("/health", (req, res) => {
+    res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
 
 // Endpoint para registrar un área
 app.post("/registrar-area", async (req, res) => {
@@ -57,5 +61,8 @@ app.get("/documento-seleccionado", async (req, res) => {
 
 // Levantar servidor
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+    console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    const appUrl = `http://localhost:${PORT}`;
+    console.log(`🔗 URL de la app: ${appUrl}`);
 });

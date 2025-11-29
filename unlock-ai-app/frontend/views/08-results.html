@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pantalla 9 - Resultados</title>
   <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/styles/shared.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <div class="chat-container">
       <div class="chat-bubble chat-compact">
         La información ha sido extraída exitosamente,<br>
-        puedes revisar el resultado escaneando el siguiente QR
+        puedes revisar el resultado a continuación
       </div>
     </div>
 
@@ -45,8 +45,8 @@
       </div>
     </div>
 
-<!-- Botón -->
-    <button class="btn btn-start" onclick="location.href='./10-learnmore.html'">Siguiente <span
+    <!-- Botón -->
+    <button class="btn btn-start" onclick="location.href='./09-learnmore.html'">Siguiente <span
         class="arrow">→</span></button>
 
   </main>
@@ -54,18 +54,33 @@
   <!-- Footer -->
   <footer class="agent-footer">
     <div class="footer-overlay">
-        <a href="./02-welcome.html">
-            <img 
-                src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759286999/samples/unlockIA/unlock-icon-white_g2zgx4.png" 
-                alt="Unlock AI by Kodigo" 
-                class="footer-logo"
-            >
-        </a>
+      <a href="./01-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
     </div>
   </footer>
 
   <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
   <script src="../assets/scripts/results.js"></script>
+  <script>
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              console.log('Documento seleccionado:', data);
+              //agregando el QR dinámicamente
+              document.querySelector('.qr-container img').src = data.doc.qr;
+              //agregando el documento dinámicamente
+              document.querySelector('iframe').src = data.doc.url;
+            }
+          });
+      });
+    }
+  </script>
 </body>
 
 </html>

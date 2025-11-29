@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 7 - Previsualización</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
+  <link href="../assets/styles/preview.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+
+  <!-- Marca en la esquina superior derecha -->
+  <header class="d-flex justify-content-end p-3">
+    <a class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">AI.kodigo.org</a>
+  </header>
+
+  <main class="preview-main text-center">
+
+    <!-- Burbujas y robot -->
+    <div class="top-section">
+      <div class="robot-space robot-small d-flex align-items-center justify-content-center">
+        <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
+      </div>
+      <div class="chat-container">
+        <div class="chat-bubble chat-compact">
+          Este es el tipo de documento elegido.<br>
+          Puedes revisarlo a continuación.
+        </div>
+      </div>
+    </div>
+    <!-- QR -->
+    <div class="qr-container">
+      <img src="https://res.cloudinary.com/dmddi5ncx/image/upload/v1759177070/samples/unlockIA/QR/curriculos_qzcpwv.png"
+        alt="Código QR">
+    </div>
+
+    <!-- Texto guía -->
+    <p class="instruction instruction-normal">
+      Presiona <span class="highlight">Extraer</span> para continuar
+    </p>
+
+    <!-- Documento previsualizado -->
+    <div class="doc-preview" onclick="openDocumentModal()">
+      <img id="docPreviewImg"
+        src="https://res.cloudinary.com/dmddi5ncx/image/upload/f_jpg,pg_1,w_800,q_auto/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
+        alt="Vista previa del documento">
+      <div class="zoom-hint">
+        <span class="desktop-hint">🔍 Click para ampliar</span>
+        <span class="mobile-hint">👆 Toca para ampliar</span>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons-group">
+      <button class="btn btn-start" onclick="location.href='./07-extraccion.html'">Extraer</button>
+      <button class="btn btn-back" onclick="location.href='./05-process.html'">⟲ Regresar</button>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="agent-footer">
+    <div class="footer-overlay">
+      <a href="./01-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Modal para zoom del documento -->
+  <div id="documentModal" class="document-modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeDocumentModal()">&times;</button>
+      <div class="modal-title">Vista del documento</div>
+    </div>
+    <div class="modal-content">
+      <div class="zoom-controls">
+        <button onclick="zoomIn()" class="zoom-btn">+</button>
+        <button onclick="zoomOut()" class="zoom-btn">−</button>
+        <button onclick="resetZoom()" class="zoom-btn">⟲</button>
+      </div>
+      <div class="image-container" id="imageContainer">
+        <img id="modalDocImg"
+          src="https://res.cloudinary.com/dmddi5ncx/image/upload/f_jpg,pg_1,w_1600,q_auto/v1759012835/samples/unlockIA/Curr%C3%ADculum_Vitae_Cv_de_Contabilidad_Minimalista_Azul_ycrjjl.pdf"
+          alt="Documento completo">
+      </div>
+    </div>
+  </div>
+
+  <script src="../scripts/bootstrap.bundle.js"></script>
+
+  <script>
+    // Variables para zoom y modal
+    let currentZoom = 1;
+    const zoomStep = 0.3;
+    const minZoom = 1;
+    const maxZoom = 3;
+
+    // Funciones del modal
+    function openDocumentModal() {
+      document.getElementById('documentModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDocumentModal() {
+      document.getElementById('documentModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      resetZoom();
+    }
+
+    // Funciones de zoom
+    function zoomIn() {
+      if (currentZoom < maxZoom) {
+        currentZoom += zoomStep;
+        applyZoom();
+      }
+    }
+
+    function zoomOut() {
+      if (currentZoom > minZoom) {
+        currentZoom -= zoomStep;
+        applyZoom();
+      }
+    }
+
+    function resetZoom() {
+      currentZoom = 1;
+      applyZoom();
+    }
+
+    function applyZoom() {
+      const img = document.getElementById('modalDocImg');
+      img.style.transform = `scale(${currentZoom})`;
+    }
+
+    // Cerrar modal al hacer click fuera de la imagen
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('documentModal');
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeDocumentModal();
+        }
+      });
+
+      // Soporte para pinch-to-zoom en móviles
+      const imageContainer = document.getElementById('imageContainer');
+      let initialDistance = 0;
+      let initialZoom = 1;
+
+      imageContainer.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          initialDistance = getDistance(e.touches[0], e.touches[1]);
+          initialZoom = currentZoom;
+        }
+      });
+
+      imageContainer.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const currentDistance = getDistance(e.touches[0], e.touches[1]);
+          const scale = currentDistance / initialDistance;
+          currentZoom = Math.min(maxZoom, Math.max(minZoom, initialZoom * scale));
+          applyZoom();
+        }
+      });
+
+      function getDistance(touch1, touch2) {
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+    });
+
+    // Cargar documento dinámicamente
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              console.log('Documento seleccionado:', data);
+              // Agregando el QR dinámicamente
+              document.querySelector('.qr-container img').src = data.doc.qr;
+
+              // Convertir URL del PDF a imagen usando Cloudinary
+              const pdfUrl = data.doc.url;
+              // Extraer el public_id del PDF de Cloudinary
+              const cloudinaryBase = 'https://res.cloudinary.com/dmddi5ncx/image/upload/';
+
+              // Imagen preview (800px)
+              const previewUrl = pdfUrl.replace(
+                cloudinaryBase,
+                cloudinaryBase + 'f_jpg,pg_1,w_800,q_auto/'
+              );
+
+              // Imagen modal (1600px para mejor calidad)
+              const modalUrl = pdfUrl.replace(
+                cloudinaryBase,
+                cloudinaryBase + 'f_jpg,pg_1,w_1600,q_auto/'
+              );
+
+              document.getElementById('docPreviewImg').src = previewUrl;
+              document.getElementById('modalDocImg').src = modalUrl;
+            }
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>

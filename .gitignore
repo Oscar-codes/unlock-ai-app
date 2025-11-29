@@ -1,30 +1,98 @@
 # Dependencies
-/node_modules
+node_modules/
 /unlock-ai-app/backend/node_modules/
-
-
-# Logs
-*.log
+/unlock-ai-app/frontend/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+/unlock-ai-app/backend/dist/
+/unlock-ai-app/backend/build/
+/unlock-ai-app/frontend/dist/
+/unlock-ai-app/frontend/build/
+*.tsbuildinfo
+
+# Logs
+*.log
+logs/
+*.log.*
 
 # Environment variables
 .env
 .env.local
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
+.env*.local
 
 # IDEs and editors
 .idea/
 .vscode/
+*.swp
+*.swo
+*.swn
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
 
-# misc
+# OS files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+.jest/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+.pnp.*
+.yarn/
+
+# Antigravity artifacts (if you want to exclude them from repo)
+.gemini/

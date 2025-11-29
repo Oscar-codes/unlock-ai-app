@@ -8,56 +8,75 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.procesarDocumentosSeleccionados = exports.obtenerDocumentoSeleccionado = exports.seleccionarDocumento = void 0;
-const firestore_1 = require("firebase/firestore");
+exports.obtenerDocumentoSeleccionado = exports.seleccionarDocumento = void 0;
 const firebase_1 = require("../config/firebase");
-const axios_1 = __importDefault(require("axios"));
-const pdf_parse_1 = __importDefault(require("pdf-parse"));
 // Marcar documento como seleccionado y desmarcar los demás
 const seleccionarDocumento = (docId) => __awaiter(void 0, void 0, void 0, function* () {
-    const docsSnap = yield (0, firestore_1.getDocs)((0, firestore_1.collection)(firebase_1.db, "documents"));
-    for (const d of docsSnap.docs) {
-        yield (0, firestore_1.updateDoc)((0, firestore_1.doc)(firebase_1.db, "documents", d.id), {
-            selected: d.id === docId
+    try {
+        const docsSnapshot = yield firebase_1.db.collection("documents").get();
+        // Usar batch para operaciones atómicas (más eficiente)
+        const batch = firebase_1.db.batch();
+        docsSnapshot.docs.forEach(doc => {
+            const docRef = firebase_1.db.collection("documents").doc(doc.id);
+            batch.update(docRef, {
+                selected: doc.id === docId
+            });
         });
+        yield batch.commit();
+        console.log(`✅ Documento ${docId} seleccionado`);
+    }
+    catch (error) {
+        console.error("❌ Error seleccionando documento:", error);
+        throw error;
     }
 });
 exports.seleccionarDocumento = seleccionarDocumento;
 // Obtener documento seleccionado
 const obtenerDocumentoSeleccionado = () => __awaiter(void 0, void 0, void 0, function* () {
-    const docsSnap = yield (0, firestore_1.getDocs)((0, firestore_1.collection)(firebase_1.db, "documents"));
-    const seleccionado = docsSnap.docs.find(d => d.data().selected);
-    return seleccionado ? seleccionado.data() : null;
+    try {
+        const docsSnapshot = yield firebase_1.db.collection("documents")
+            .where("selected", "==", true)
+            .limit(1)
+            .get();
+        if (docsSnapshot.empty) {
+            return null;
+        }
+        const doc = docsSnapshot.docs[0];
+        return Object.assign({ id: doc.id }, doc.data());
+    }
+    catch (error) {
+        console.error("❌ Error obteniendo documento seleccionado:", error);
+        throw error;
+    }
 });
 exports.obtenerDocumentoSeleccionado = obtenerDocumentoSeleccionado;
 // Procesar documentos seleccionados
-const procesarDocumentosSeleccionados = () => __awaiter(void 0, void 0, void 0, function* () {
+/*export const procesarDocumentosSeleccionados = async () => {
     try {
         // Obtener documentos seleccionados desde Firestore
-        const docsSnap = yield (0, firestore_1.getDocs)((0, firestore_1.collection)(firebase_1.db, "documents"));
+        const docsSnap = await getDocs(collection(db, "documents"));
         const documentosSeleccionados = docsSnap.docs
             .filter(d => d.data().selected)
-            .map(d => (Object.assign({ id: d.id }, d.data())));
+            .map(d => ({ id: d.id, ...d.data() as { name: string; url: string; selected: boolean } }));
+
         const resultados = [];
+
         for (const doc of documentosSeleccionados) {
-            const response = yield axios_1.default.get(doc.url, { responseType: "arraybuffer" });
-            const pdfBuffer = Buffer.from(response.data);
-            const pdfData = yield (0, pdf_parse_1.default)(pdfBuffer);
+            const response = await axios.get(doc.url, { responseType: "arraybuffer" });
+            const pdfBuffer = Buffer.from(response.data as ArrayBuffer);
+            const pdfData = await pdfParse(pdfBuffer);
+
             resultados.push({
                 id: doc.id,
                 name: doc.name,
                 text: pdfData.text // Aquí puedes personalizar la extracción de datos relevantes
             });
         }
+
         return { success: true, documentos: resultados };
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Error al procesar documentos seleccionados:", error);
         return { success: false, error: "No se pudieron procesar los documentos seleccionados." };
     }
-});
-exports.procesarDocumentosSeleccionados = procesarDocumentosSeleccionados;
+};*/ 

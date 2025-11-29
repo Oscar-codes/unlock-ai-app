@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     statusText.textContent = "Extracción completada ✅";
     //robotImg.src = "../assets/gif/Robot base 5 check.gif";
     // Aquí puedes redirigir a la siguiente pantalla
-    window.location.href = "09-results.html";
+    window.location.href = "08-results.html";
   }, 6000);
 });
 
