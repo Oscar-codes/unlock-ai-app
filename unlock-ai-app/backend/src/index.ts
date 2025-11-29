@@ -63,4 +63,6 @@ app.get("/documento-seleccionado", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
     console.log(`📍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    const appUrl = `http://localhost:${PORT}`;
+    console.log(`🔗 URL de la app: ${appUrl}`);
 });
