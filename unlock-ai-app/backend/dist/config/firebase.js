@@ -1,17 +1,77 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || (function () {
+    var ownKeys = function(o) {
+        ownKeys = Object.getOwnPropertyNames || function (o) {
+            var ar = [];
+            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
+            return ar;
+        };
+        return ownKeys(o);
+    };
+    return function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+})();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.db = void 0;
-const app_1 = require("firebase/app");
-const firestore_1 = require("firebase/firestore");
-const firebaseConfig = {
-    apiKey: "AIzaSyDJcSpqhbO71-fneUDO0WRIzsrzKejXO6k",
-    authDomain: "unlock-ai-app.firebaseapp.com",
-    databaseURL: "https://unlock-ai-app-default-rtdb.firebaseio.com",
-    projectId: "unlock-ai-app",
-    storageBucket: "unlock-ai-app.firebasestorage.app",
-    messagingSenderId: "647502458119",
-    appId: "1:647502458119:web:0e0d12a01bff30a06f69a2",
-    measurementId: "G-1EXK7WJ8Q0"
-};
-const app = (0, app_1.initializeApp)(firebaseConfig);
-exports.db = (0, firestore_1.getFirestore)(app);
+exports.auth = exports.db = void 0;
+const admin = __importStar(require("firebase-admin"));
+const dotenv = __importStar(require("dotenv"));
+dotenv.config();
+// Inicializar Firebase Admin
+if (!admin.apps.length) {
+    try {
+        // Para producción (Render con variable de entorno)
+        if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+            const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+            admin.initializeApp({
+                credential: admin.credential.cert(serviceAccount),
+                databaseURL: "https://unlock-ai-app-default-rtdb.firebaseio.com"
+            });
+            console.log('✅ Firebase Admin inicializado con credenciales de servicio');
+        }
+        // Para desarrollo local (con archivo JSON)
+        else if (process.env.NODE_ENV === 'development') {
+            const serviceAccount = require('../../serviceAccountKey.json');
+            admin.initializeApp({
+                credential: admin.credential.cert(serviceAccount),
+                databaseURL: "https://unlock-ai-app-default-rtdb.firebaseio.com"
+            });
+            console.log('✅ Firebase Admin inicializado localmente');
+        }
+        // Fallback con Application Default Credentials
+        else {
+            admin.initializeApp({
+                credential: admin.credential.applicationDefault(),
+                databaseURL: "https://unlock-ai-app-default-rtdb.firebaseio.com"
+            });
+            console.log('✅ Firebase Admin inicializado con credenciales por defecto');
+        }
+    }
+    catch (error) {
+        console.error('❌ Error inicializando Firebase Admin:', error);
+        process.exit(1);
+    }
+}
+exports.db = admin.firestore();
+exports.auth = admin.auth();
+exports.default = admin;

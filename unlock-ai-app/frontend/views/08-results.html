@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pantalla 9 - Resultados</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
+  <link href="../assets/styles/results.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+
+  <!-- Marca en la esquina superior derecha -->
+  <header class="d-flex justify-content-end p-3">
+    <a class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">AI.kodigo.org</a>
+  </header>
+  <main class="results-main text-center">
+
+    <!-- Robot -->
+    <div class="robot-space robot-small d-flex align-items-center justify-content-center">
+      <img src="../assets/gif/Robot base 5 check.gif" alt="Robot IA" class="robot-img" />
+    </div>
+
+    <!-- Burbuja -->
+    <div class="chat-container">
+      <div class="chat-bubble chat-compact">
+        La información ha sido extraída exitosamente,<br>
+        puedes revisar el resultado a continuación
+      </div>
+    </div>
+
+    <!-- QR -->
+    <div class="qr-container">
+      <img id="qr-img" src="../assets/images/sample-qr.png" alt="QR resultado" />
+    </div>
+
+    <!-- Tabla de resultados -->
+    <div class="table-container shadow-sm">
+      <div class="table-wrap">
+        <table id="resultsTable" class="table table-bordered table-striped">
+          <!-- Se llena por JS -->
+        </table>
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <button class="btn btn-start" onclick="location.href='./09-learnmore.html'">Siguiente <span
+        class="arrow">→</span></button>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="agent-footer">
+    <div class="footer-overlay">
+      <a href="./01-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
+    </div>
+  </footer>
+
+  <script src="../assets/scripts/bootstrap.bundle.min.js"></script>
+  <script src="../assets/scripts/results.js"></script>
+  <script>
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              console.log('Documento seleccionado:', data);
+              //agregando el QR dinámicamente
+              document.querySelector('.qr-container img').src = data.doc.qr;
+              //agregando el documento dinámicamente
+              document.querySelector('iframe').src = data.doc.url;
+            }
+          });
+      });
+    }
+  </script>
+</body>
+
+</html>

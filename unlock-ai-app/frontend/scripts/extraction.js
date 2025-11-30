@@ -14,11 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Simular proceso en 3 etapas
   activateStep(0);
-  setTimeout(() => activateStep(1), 3000);
-  setTimeout(() => activateStep(2), 6000);
+  setTimeout(() => activateStep(1), 2000);
+  setTimeout(() => activateStep(2), 4000);
   setTimeout(() => {
     statusText.textContent = "Extracción completada ✅";
+    //robotImg.src = "../assets/gif/Robot base 5 check.gif";
     // Aquí puedes redirigir a la siguiente pantalla
-    window.location.href = "09-results.html";
-  }, 9000);
+    window.location.href = "08-results.html";
+  }, 6000);
 });
+
+
+// Nota: Los tiempos (3000ms, 6000ms, 9000ms) pueden ajustarse según sea necesario.

@@ -1,14 +1,28 @@
-import { doc, getDoc, increment, updateDoc } from "firebase/firestore";
+import * as admin from "firebase-admin";
 import { db } from "../config/firebase";
 
 export const registrarArea = async (areaId:string) => {
-    const areaRef = doc(db, "areas", areaId);
-    const areaSnap = await getDoc(areaRef);
+    try {
+        const areaRef = db.collection("areas").doc(areaId);
+        const areaSnap = await areaRef.get();
 
-    if(areaSnap.exists()){
-        await updateDoc(areaRef, {
-            count: increment(1),
-            timestamp: new Date()
-        })
+        if (areaSnap.exists) {
+            // Admin SDK usa FieldValue.increment()
+            await areaRef.update({
+                count: admin.firestore.FieldValue.increment(1),
+                timestamp: admin.firestore.FieldValue.serverTimestamp()
+            });
+            console.log(`✅ Área ${areaId} actualizada`);
+        } else {
+            // Si no existe, créala
+            await areaRef.set({
+                count: 1,
+                timestamp: admin.firestore.FieldValue.serverTimestamp()
+            });
+            console.log(`✅ Área ${areaId} creada`);
+        }
+    } catch (error) {
+        console.error("❌ Error registrando área:", error);
+        throw error;
     }
 }

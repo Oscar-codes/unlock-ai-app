@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 3 - Selección de Área</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
+  <link href="../assets/styles/area.css" rel="stylesheet">
+  <link href="../assets/styles/footer.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+
+  <!-- Marca en la esquina superior derecha -->
+  <header class="d-flex justify-content-end p-3">
+    <span class="site-brand" href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
+  </header>
+
+  <main class="area-main text-center">
+
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 3 hablando.gif" alt="Robot IA" class="robot-img">
+    </div>
+
+    <!-- Mensaje tipo burbuja -->
+    <div class="chat-container">
+      <div class="chat-bubble">
+        La inteligencia artificial puede ayudarnos a realizar tareas en diferentes áreas,
+        que a los seres humanos puede llevarles mucho tiempo.
+      </div>
+    </div>
+
+    <!-- Instrucción -->
+    <p class="instruction">Elige un área de tu interés</p>
+
+    <!-- Grid de áreas -->
+    <div class="areas-grid">
+      <div class="area-item">
+        <img src="../assets/icons/education.png" alt="Educación">
+        <span>EDUCACIÓN</span>
+      </div>
+      <div class="area-item">
+        <img src="../assets/icons/communications.png" alt="Comunicaciones">
+        <span>COMUNICACIONES</span>
+      </div>
+      <div class="area-item">
+        <img src="../assets/icons/bank.png" alt="Banca">
+        <span>BANCA</span>
+      </div>
+      <div class="area-item">
+        <img src="../assets/icons/industry.png" alt="Industria">
+        <span>INDUSTRIA</span>
+      </div>
+      <div class="area-item">
+        <img src="../assets/icons/goverment.png" alt="Gobierno">
+        <span>GOBIERNO</span>
+      </div>
+      <div class="area-item">
+        <img src="../assets/icons/sales.png" alt="Ventas">
+        <span>VENTAS</span>
+      </div>
+    </div>
+
+    <!-- Botón siguiente -->
+    <button class="btn btn-start" onclick="location.href='./04-documents.html'">
+      Siguiente <span class="arrow">→</span>
+    </button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center footer agent-footer">
+    <a href="./01-welcome.html">
+      <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+    </a>
+  </footer>
+
+  <script src="../scripts/bootstrap.bundle.js"></script>
+
+  <script>
+    document.querySelectorAll('.area-item').forEach(item => {
+      item.addEventListener('click', () => {
+        // Remover la clase 'selected' de todos los elementos
+        document.querySelectorAll('.area-item').forEach(i => i.classList.remove('selected'));
+        // Agregar la clase 'selected' al elemento clickeado
+        item.classList.add('selected');
+
+        // Obtener el nombre del área seleccionada
+        const areaName = item.querySelector('span').textContent;
+        const areaId = areaName.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+        fetch('https://unlock-ai-app-backend.onrender.com/registrar-area', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id: areaId })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Área seleccionada:', areaId);
+            console.log('Respuesta Backend:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

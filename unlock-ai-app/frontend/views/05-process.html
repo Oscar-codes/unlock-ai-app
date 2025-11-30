@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantalla 6 - Proceso IA</title>
+  <link href="../assets/styles/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/styles/shared.css" rel="stylesheet">
+  <link href="../assets/styles/process.css" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+
+  <!-- Marca -->
+  <header class="d-flex justify-content-end p-3">
+    <span class="site-brand " href="https://kodigo.org/ai-for-business/cohort/">Ai.kodigo.org</span>
+  </header>
+
+  <main class="process-main text-center">
+
+    <!-- Burbuja -->
+    <div class="chat-container">
+      <div class="chat-bubble">
+        Kodigo, como líder en procesos formativos sobre inteligencia artificial,
+        ha programado un proceso automatizado de extracción de datos.
+      </div>
+    </div>
+
+    <!-- Robot -->
+    <div class="robot-space">
+      <img src="../assets/gif/Robot base 4 prosesando info.gif" alt="Robot IA" class="robot-img">
+    </div>
+
+    <!-- Texto guía -->
+    <p class="instruction instruction-normal">Presiona sobre el botón <span class="highlight">Comenzar</span></p>
+
+    <!-- Documento seleccionado -->
+    <div class="doc-selected">
+      <img src="../assets/icons/curriculos.png" alt="Currículos">
+      <span>CURRÍCULOS</span>
+    </div>
+
+    <!-- Botones -->
+    <div class="buttons-group">
+      <button class="btn btn-start" onclick="location.href='./06-preview.html'">Comenzar</button>
+      <button class="btn btn-back" onclick="location.href='./04-documents.html'">⟲ Regresar</button>
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer class="agent-footer">
+    <div class="footer-overlay">
+      <a href="./01-welcome.html">
+        <img src="../assets/images/unlock-icon-black.png" alt="Unlock AI by Kodigo" class="footer-logo">
+      </a>
+    </div>
+  </footer>
+
+  <script src="../scripts/bootstrap.bundle.js"></script>
+  <script>
+    const docId = sessionStorage.getItem('selectedDocId');
+
+    if (docId) {
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch('https://unlock-ai-app-backend.onrender.com/documento-seleccionado')
+          .then(res => res.json())
+          .then(data => {
+            if (data.success && data.doc) {
+              const docSelected = document.querySelector('.doc-selected');
+              docSelected.querySelector('img').src = data.doc.icon;
+              docSelected.querySelector('span').textContent = data.doc.name;
+            }
+          });
+      });
+    }
+
+  </script>
+</body>
+
+</html>

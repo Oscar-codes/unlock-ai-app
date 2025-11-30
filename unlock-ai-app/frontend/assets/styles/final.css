@@ -1,109 +1,424 @@
-/* Fondo degradado (mismo de welcome) */
-body {
-  min-height: 100vh;
-  margin: 0;
-  background: linear-gradient(180deg, #000000, #8C52FF, #FA7EF8);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Segoe UI', sans-serif;
+/* ===================================================================
+   FINAL PAGE - Estilos específicos
+   Nota: Estilos comunes están en shared.css
+   El fondo degradado se define en shared.css con .bg-gradient
+   =================================================================== */
+
+/* ===================================================================
+   PAGE LOAD ANIMATIONS
+   =================================================================== */
+
+/* Keyframes para animaciones de entrada */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-/* Contenido principal */
-.final-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 4vh 6vw;
-  gap: 3vh;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Texto */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes badgePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Aplicar animaciones a elementos */
+.final-text {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.qr-container {
+  animation: scaleIn 0.8s ease-out 0.3s backwards;
+}
+
+.courses-section {
+  animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+.courses-info h4 {
+  animation: slideInLeft 0.6s ease-out 0.7s backwards;
+}
+
+.courses-info h5 {
+  animation: slideInLeft 0.6s ease-out 0.8s backwards;
+}
+
+/* Animación escalonada para cada item de la lista */
+.courses-list li:nth-child(1) {
+  animation: slideInLeft 0.6s ease-out 0.9s backwards;
+}
+
+.courses-list li:nth-child(2) {
+  animation: slideInLeft 0.6s ease-out 1.0s backwards;
+}
+
+.courses-list li:nth-child(3) {
+  animation: slideInLeft 0.6s ease-out 1.1s backwards;
+}
+
+/* Animación sutil de pulso en los badges */
+.courses-list .badge {
+  animation: badgePulse 2s ease-in-out 1.5s;
+}
+
+.final-footer {
+  animation: fadeIn 0.8s ease-out 1.2s backwards;
+}
+
+/* Accesibilidad: desactivar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+
+  .final-text,
+  .qr-container,
+  .courses-section,
+  .courses-info h4,
+  .courses-info h5,
+  .courses-list li,
+  .courses-list .badge,
+  .final-footer {
+    animation: none;
+  }
+}
+
+/* Texto principal */
 .final-text {
   font-size: clamp(1rem, 2vh, 1.4rem);
   line-height: 1.6;
   max-width: 800px;
+  color: #fff;
 }
 
-/* QR */
-.qr-container img {
-  width: 180px;
-  height: auto;
-  margin: 2vh 0;
-}
-
-/* Cursos */
-.courses-info {
-  max-width: 800px;
+/* Información de cursos */
+.courses-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   margin-top: 2vh;
 }
+
+.courses-info {
+  max-width: 400px;
+  padding: 0 2rem;
+}
+
 .courses-info h4 {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
 .courses-info h5 {
-  font-weight: 500;
-  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
+
+/* Wrapper para bracket y lista */
+.courses-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Bracket decorativo */
+.bracket-decoration {
+  width: 3px;
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.bracket-decoration::before,
+.bracket-decoration::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.bracket-decoration::before {
+  top: 0;
+}
+
+.bracket-decoration::after {
+  bottom: 0;
+}
+
 .courses-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  flex: 1;
 }
+
 .courses-list li {
-  margin: 0.8rem 0;
-  font-size: 1rem;
+  margin: 0.9rem 0;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 0.8rem;
+  color: #fff;
+  font-weight: 500;
 }
+
 .courses-list .badge {
   background: #9b4dff;
   border-radius: 50%;
   color: #fff;
   font-weight: 700;
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 0.75rem;
+  min-width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+/* QR Container */
+.qr-container {
+  margin: 2vh auto;
+}
+
+.qr-container img {
+  width: 180px;
+  height: auto;
 }
 
 /* Footer */
 .final-footer {
-  margin-top: auto;
-  padding: 3vh 0 2vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5vh 0;
+  background: transparent;
+}
+
+.footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1vh;
+  gap: 0.5rem;
 }
-.footer-overlay {
-  padding-bottom: 20px;
-}
+
 .footer-logo {
-  width: 250px;
-  max-width: 80%;       /* no más del 80% del ancho de la pantalla */
-  height: auto;         /* mantiene proporción */
-  opacity: 0.95;
-
-  /* Para centrar en el medio */
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 120px;
+  height: auto;
 }
+
 .footer-link {
-  font-size: 1rem;
   color: #fff;
+  font-size: 0.9rem;
   margin: 0;
+  font-weight: 500;
+  text-decoration: none;
 }
 
-/* Portrait (Totem 1080x1920) */
-@media (orientation: portrait) {
-  .qr-container img { width: 220px; }
-  .courses-list li { font-size: 1.2rem; }
-  .final-text { font-size: 1.4rem; }
+/* ===== RESPONSIVE - MOBILE MEDIUM ===== */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .final-main {
+    padding: 2vh 3vw;
+    gap: 2vh;
+  }
+
+  .final-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 0 1rem;
+  }
+
+  .qr-container img {
+    width: 170px;
+  }
+
+  .courses-info {
+    padding: 0 1rem;
+    max-width: 380px;
+  }
+
+  .courses-info h4 {
+    font-size: 1rem;
+  }
+
+  .courses-info h5 {
+    font-size: 0.9rem;
+  }
+
+  .courses-list li {
+    font-size: 0.9rem;
+    margin: 0.8rem 0;
+  }
+
+  .courses-list .badge {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .footer-logo {
+    width: 110px;
+  }
+
+  .footer-link {
+    font-size: 0.85rem;
+  }
 }
 
-/* Landscape (1920x1080) */
+/* ===== RESPONSIVE - MOBILE SMALL ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+  .final-main {
+    padding: 1.5vh 4vw;
+    gap: 1.5vh;
+    justify-content: center;
+    padding-bottom: 15vh;
+  }
+
+  .final-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    padding: 0 0.5rem;
+    max-width: 95%;
+  }
+
+  .qr-container {
+    margin: 1.5vh auto;
+  }
+
+  .qr-container img {
+    width: 150px;
+  }
+
+  .courses-section {
+    margin-top: 1.5vh;
+  }
+
+  .courses-info {
+    padding: 0 0.5rem;
+    max-width: 95%;
+  }
+
+  .courses-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .courses-info h5 {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .courses-wrapper {
+    gap: 0.8rem;
+  }
+
+  .bracket-decoration {
+    width: 2.5px;
+  }
+
+  .bracket-decoration::before,
+  .bracket-decoration::after {
+    width: 12px;
+    height: 2.5px;
+  }
+
+  .courses-list li {
+    font-size: 0.8rem;
+    margin: 0.75rem 0;
+    gap: 0.6rem;
+  }
+
+  .courses-list .badge {
+    min-width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+
+  .footer-logo {
+    width: 100px;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+  }
+}
+
+/* Media queries específicas para final - Desktop */
+@media (orientation: portrait) and (min-width: 769px) {
+  .qr-container img {
+    width: 220px;
+  }
+
+  .courses-list li {
+    font-size: 1.2rem;
+  }
+
+  .final-text {
+    font-size: 1.4rem;
+  }
+}
+
 @media (orientation: landscape) {
-  .final-main { max-width: 900px; margin: 0 auto; }
+  .final-main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 }
